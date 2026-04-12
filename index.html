@@ -82,9 +82,9 @@
     <p>
       Nami: Spending Tracker ("we", "our", or "us") is a personal finance app that helps you
       understand your spending by analysing bank statements using AI. This policy explains
-      what data we collect, how we use it, and your rights.
+      what data we collect, how we use it, which third parties we share it with, and your rights.
     </p>
-    <p>Last updated: March 2026</p>
+    <p>Last updated: April 2026</p>
   </section>
 
   <section>
@@ -92,9 +92,13 @@
     <ul>
       <li><strong>Email address</strong> — used to create and manage your account.</li>
       <li>
-        <strong>Financial transaction data</strong> — the transactions extracted from bank
-        statements you upload. This data is stored securely in your account and is never
-        shared with third parties.
+        <strong>Bank statement content</strong> — when you upload a PDF or CSV bank statement,
+        the content of that file is sent to Google's Gemini AI service to extract and categorise
+        your transactions. You will be asked for your consent before this occurs.
+      </li>
+      <li>
+        <strong>Financial transaction data</strong> — the transactions extracted from your
+        statements are stored securely in your account.
       </li>
     </ul>
     <p>We do not collect your name, phone number, location, or any payment information.</p>
@@ -113,8 +117,27 @@
   </section>
 
   <section>
-    <h2>Third-Party Services</h2>
-    <p>Nami: Spending Tracker uses the following third-party services:</p>
+    <h2>Third-Party AI Processing — Google Gemini</h2>
+    <p>
+      Nami uses <strong>Google's Gemini AI</strong> to read and extract transactions from the
+      bank statements you upload. Here is exactly what happens:
+    </p>
+    <ul>
+      <li><strong>What data is sent:</strong> The full text content of your uploaded bank statement (PDF or CSV).</li>
+      <li><strong>Who it is sent to:</strong> Google LLC, via the Gemini API, proxied through our secure server. Your device never communicates directly with Google.</li>
+      <li><strong>Purpose:</strong> To extract transaction descriptions, amounts, dates, and categories from your statement.</li>
+      <li><strong>Retention:</strong> Google does not store or train on your statement data after processing. We only retain the extracted transaction records in your account.</li>
+      <li><strong>Your consent:</strong> You will be shown a consent prompt the first time you upload a statement, explaining this processing. You must agree before any data is sent.</li>
+    </ul>
+    <p>
+      Google's data processing provides equivalent privacy protections as required by applicable
+      laws. For more information, see the
+      <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Other Third-Party Services</h2>
     <ul>
       <li>
         <strong>Supabase</strong> — secure cloud database and authentication.
@@ -123,11 +146,13 @@
         <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a>
       </li>
       <li>
-        <strong>Google Gemini AI</strong> — used to parse bank statements and generate
-        spending insights. Statement text is sent to Gemini for analysis and is not stored
-        by us beyond your transaction records. Requests are proxied through our server so
-        your data is never sent directly from your device to Google.
-        <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+        <strong>RevenueCat</strong> — used to manage in-app subscription purchases.
+        <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
+      </li>
+      <li>
+        <strong>PostHog</strong> — used for anonymous product analytics (app opens, feature usage).
+        No personally identifiable financial data is included in analytics events.
+        <a href="https://posthog.com/privacy" target="_blank">PostHog Privacy Policy</a>
       </li>
     </ul>
   </section>
@@ -157,6 +182,7 @@
     <ul>
       <li>Access the data we hold about you.</li>
       <li>Delete your account and all associated data at any time, directly in the app.</li>
+      <li>Withdraw consent for AI processing by not uploading statements.</li>
       <li>Contact us with any privacy-related questions.</li>
     </ul>
   </section>
@@ -164,7 +190,7 @@
   <section>
     <h2>Children's Privacy</h2>
     <p>
-      Nami: Spending Tracker is not directed at children under 13. We do not knowingly collect
+      Nami is not directed at children under 13. We do not knowingly collect
       data from children.
     </p>
   </section>
