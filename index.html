@@ -84,13 +84,17 @@
       understand your spending by analysing bank statements using AI. This policy explains
       what data we collect, how we use it, which third parties we share it with, and your rights.
     </p>
-    <p>Last updated: April 2026</p>
+    <p>Last updated: 25 April 2026</p>
   </section>
 
   <section>
     <h2>Data We Collect</h2>
     <ul>
-      <li><strong>Email address</strong> — used to create and manage your account.</li>
+      <li><strong>Email address</strong> — used to create and manage your account. Provided either
+        when you sign up with email and password, or returned to us by Apple or Google when you
+        choose Sign in with Apple or Sign in with Google.</li>
+      <li><strong>Account identifier</strong> — a unique opaque user ID is created for your account.
+        This is the only identifier we use to associate analytics events with your account.</li>
       <li>
         <strong>Bank statement content</strong> — when you upload a PDF or CSV bank statement,
         the content of that file is sent to Google's Gemini AI service to extract and categorise
@@ -100,8 +104,47 @@
         <strong>Financial transaction data</strong> — the transactions extracted from your
         statements are stored securely in your account.
       </li>
+      <li>
+        <strong>Subscription status</strong> — if you purchase a subscription, RevenueCat records
+        your purchase and renewal status against an anonymous user ID so we can unlock paid
+        features. Apple processes the payment itself; we never see your card details.
+      </li>
     </ul>
-    <p>We do not collect your name, phone number, location, or any payment information.</p>
+    <p>
+      We do not collect your phone number, location, contacts, photo library, or payment card
+      information. If you sign in with Apple or Google, those providers may pass your name and
+      profile picture to the app during the sign-in handshake, but Nami does not retain or
+      transmit your name or profile picture beyond that initial response.
+    </p>
+  </section>
+
+  <section>
+    <h2>How You Sign In</h2>
+    <p>Nami offers three sign-in methods. You choose which one to use:</p>
+    <ul>
+      <li>
+        <strong>Email and password</strong> — handled by Supabase Auth. Your password is
+        never seen by us in plain text; Supabase stores a salted hash.
+      </li>
+      <li>
+        <strong>Sign in with Apple</strong> — Apple authenticates you and returns an identity
+        token plus your email (which may be a private relay address you control) and, on first
+        sign-in only, your name. Nami exchanges the identity token for a Supabase session.
+        Apple's relay address means you can revoke our access at any time from your Apple ID
+        settings without losing access to your account on our side.
+      </li>
+      <li>
+        <strong>Sign in with Google</strong> — Google authenticates you via the official
+        Google Sign-In iOS SDK and returns an identity token, your email address, and your
+        Google account ID. Nami exchanges the identity token for a Supabase session.
+        See the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+        for how Google handles your account.
+      </li>
+    </ul>
+    <p>
+      Whichever method you choose, the only piece of identity data we retain on our backend
+      is your email address and an opaque Supabase user ID.
+    </p>
   </section>
 
   <section>
@@ -146,12 +189,29 @@
         <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a>
       </li>
       <li>
-        <strong>RevenueCat</strong> — used to manage in-app subscription purchases.
+        <strong>Apple — Sign in with Apple</strong> — used only when you choose this sign-in
+        method. Apple returns an identity token (and on first sign-in, your name and email)
+        which we exchange for a Supabase session.
+        <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>
+      </li>
+      <li>
+        <strong>Google Sign-In</strong> — used only when you choose to Sign in with Google.
+        Google's iOS SDK handles the OAuth flow and returns an identity token, your email,
+        and your Google account ID, which we exchange for a Supabase session. This is a
+        separate service from the Gemini AI integration described above and uses a
+        different Google product.
+        <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+      </li>
+      <li>
+        <strong>RevenueCat</strong> — used to manage in-app subscription purchases. RevenueCat
+        receives an anonymous user ID and your purchase events from Apple's StoreKit; it
+        does not see your name, email, or transaction data.
         <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
       </li>
       <li>
-        <strong>PostHog</strong> — used for anonymous product analytics (app opens, feature usage).
-        No personally identifiable financial data is included in analytics events.
+        <strong>PostHog</strong> — used for anonymous product analytics (app opens, feature usage,
+        sign-in method). Events are tagged with your opaque Supabase user ID only — never your
+        email, name, or any financial data.
         <a href="https://posthog.com/privacy" target="_blank">PostHog Privacy Policy</a>
       </li>
     </ul>
