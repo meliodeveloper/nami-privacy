@@ -60,6 +60,45 @@
     a { color: #6b21e8; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* Highlighted callout for the AI processing summary at the top.
+       Distinct from the regular section card so reviewers and users
+       can find the AI disclosure at a glance — Apple's 5.1.1(i)
+       feedback specifically calls out clarity of AI data handling. */
+    .ai-callout {
+      background: linear-gradient(135deg, #f5edff 0%, #ede4ff 100%);
+      border-left: 4px solid #6b21e8;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+
+    .ai-callout h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .ai-callout .ai-badge {
+      background: #6b21e8;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    /* Highlighted variant for the in-depth AI processing section
+       further down. Subtle purple border + tinted heading so the
+       section reads as the policy's most important block without
+       breaking the visual rhythm of the rest of the document. */
+    .ai-section {
+      border: 1.5px solid rgba(107, 33, 232, 0.25);
+      box-shadow: 0 4px 12px rgba(107, 33, 232, 0.08);
+    }
+
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -84,7 +123,37 @@
       understand your spending by analysing bank statements using AI. This policy explains
       what data we collect, how we use it, which third parties we share it with, and your rights.
     </p>
-    <p>Last updated: 25 April 2026</p>
+    <p>Last updated: 28 April 2026</p>
+  </section>
+
+  <section class="ai-callout">
+    <h2>
+      <span class="ai-badge">AI</span>
+      At a glance — AI data processing
+    </h2>
+    <ul>
+      <li>
+        <strong>What we share:</strong> the transaction data inside any bank statement
+        (PDF or CSV) you choose to upload — dates, merchant names, amounts, and surrounding
+        statement text.
+      </li>
+      <li>
+        <strong>Who it goes to:</strong> Google's Gemini AI, used to extract and categorise
+        your transactions and to generate the spending insights you see in the app.
+      </li>
+      <li>
+        <strong>Retention:</strong> Google does not retain your statement data after
+        processing and does not use it to train AI models.
+      </li>
+      <li>
+        <strong>Your control:</strong> the first time you upload a statement, Nami asks for
+        your explicit consent before sending anything. You can delete all your data at any
+        time from <strong>Profile → Privacy &amp; Data → Delete Account</strong>.
+      </li>
+    </ul>
+    <p>
+      The full breakdown is in the <a href="#ai-processing">AI Processing</a> section below.
+    </p>
   </section>
 
   <section>
@@ -159,18 +228,47 @@
     </p>
   </section>
 
-  <section>
+  <section id="ai-processing" class="ai-section">
     <h2>Third-Party AI Processing — Google Gemini</h2>
     <p>
       Nami uses <strong>Google's Gemini AI</strong> to read and extract transactions from the
-      bank statements you upload. Here is exactly what happens:
+      bank statements you upload, and to generate the spending insights and category breakdowns
+      you see in the app. Here is exactly what happens:
     </p>
     <ul>
-      <li><strong>What data is sent:</strong> The full text content of your uploaded bank statement (PDF or CSV).</li>
-      <li><strong>Who it is sent to:</strong> Google LLC, via the Gemini API, proxied through our secure server. Your device never communicates directly with Google.</li>
-      <li><strong>Purpose:</strong> To extract transaction descriptions, amounts, dates, and categories from your statement.</li>
-      <li><strong>Retention:</strong> Google does not store or train on your statement data after processing. We only retain the extracted transaction records in your account.</li>
-      <li><strong>Your consent:</strong> You will be shown a consent prompt the first time you upload a statement, explaining this processing. You must agree before any data is sent.</li>
+      <li>
+        <strong>What data is sent:</strong> The full text content of your uploaded bank statement
+        (PDF or CSV) — including transaction dates, merchant names, amounts, and any
+        surrounding statement text. When you ask Nami a question through the in-app
+        assistant ("Ask Nami"), your question and the relevant transaction context are also
+        sent so the assistant can answer.
+      </li>
+      <li>
+        <strong>Who it is sent to:</strong> Google LLC, via the Gemini API, proxied through our
+        secure server. Your device never communicates directly with Google.
+      </li>
+      <li>
+        <strong>Purpose:</strong> To extract transaction descriptions, amounts, dates, and
+        categories from your statement, and to generate the personalised spending insights,
+        category summaries, and assistant answers Nami shows you.
+      </li>
+      <li>
+        <strong>Retention:</strong> Google does not store your statement data after processing
+        and does not use it to train AI models. We only retain the extracted transaction
+        records in your account so they appear when you reopen the app.
+      </li>
+      <li>
+        <strong>Your consent:</strong> You are shown an explicit consent prompt the first time
+        you upload a statement, explaining this processing. You must agree before any data is
+        sent. You can review the same disclosure at any time from
+        <strong>Profile → Privacy &amp; Data → AI processing</strong>.
+      </li>
+      <li>
+        <strong>Your right to delete:</strong> You can delete every transaction Nami has
+        extracted, along with your account, at any time from
+        <strong>Profile → Privacy &amp; Data → Delete Account</strong>. Deletion is permanent
+        and removes your data from our servers.
+      </li>
     </ul>
     <p>
       Google's data processing provides equivalent privacy protections as required by applicable
