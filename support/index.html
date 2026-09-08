@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – Nami: Spending Tracker</title>
+  <meta name="description" content="Support for Nami: Spending Tracker by Melio Labs Ltd — bank connections, statements, shifts, budgets, Pro, notifications and your data." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#FCFCFB" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  <style>
+    /* ------------------------------------------------------------------
+       RevivalTheme — paper and ink.
+       Light tokens on :root, dark tokens swapped in prefers-color-scheme
+       only (GitHub Pages does not stamp a theme attribute).
+       One accent on the page: the reply-time mark in the masthead.
+
+       THIS STYLESHEET IS A COPY OF ../index.html's, BYTE FOR BYTE.
+       The privacy policy and this page are one visual system; when a
+       token or a rule changes there, change it here too rather than
+       letting the two drift.
+       ------------------------------------------------------------------ */
+    :root {
+      color-scheme: light;
+
+      --paper:    #FCFCFB;
+      --card:     #FFFDFA;
+      --ink:      #2E2C27;
+      --ink-soft: #6B6A63;
+      --ink-grey: #B4B3A8;
+      --hairline: #E4E3DC;
+      --accent:   #C6613F;
+
+      --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino,
+               "Hoefler Text", Georgia, "Times New Roman", serif;
+      --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+
+      --measure: 65ch;
+      --gutter: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+
+        --paper:    #171613;
+        --card:     #201E1A;
+        --ink:      #EBE8E0;
+        --ink-soft: #9C988C;
+        --ink-grey: #6F6B60;
+        --hairline: #33302A;
+        --accent:   #DE8460;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      background: var(--paper);
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* One column, one measure, shared by masthead, body and colophon. */
+    .masthead,
+    main,
+    footer {
+      max-width: var(--measure);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ---------- masthead ---------- */
+
+    .masthead {
+      padding-top: 56px;
+      padding-bottom: 30px;
+    }
+
+    .masthead-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .masthead h1 {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 100;
+      font-weight: 500;
+      font-size: clamp(2.15rem, 1.55rem + 2.6vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      color: var(--ink);
+    }
+
+    /* ---------- body ---------- */
+
+    main { padding-bottom: 0; }
+
+    /* Sections are separated by a rule, never boxed. */
+    section { padding: 34px 0; }
+    section + section { border-top: 1px solid var(--hairline); }
+
+    h2 {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 32;
+      font-weight: 600;
+      font-size: 1.32rem;
+      line-height: 1.25;
+      letter-spacing: -0.012em;
+      text-wrap: balance;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    strong { font-weight: 600; color: var(--ink); }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.15em;
+      margin-bottom: 16px;
+    }
+
+    ul:last-child { margin-bottom: 0; }
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 0.15em;
+    }
+
+    li:last-child { margin-bottom: 0; }
+    li::marker { color: var(--ink-soft); }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--hairline);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 120ms ease;
+    }
+
+    a:hover { text-decoration-color: var(--ink); }
+
+    a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* The single accent on the page: the mark against the revision date. */
+    .stamp {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 22px;
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      color: var(--ink-soft);
+    }
+
+    .stamp::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 20px;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--accent);
+      transform: translateY(-0.28em);
+    }
+
+    /* ---------- the "At a glance" card ---------- */
+
+    .ai-callout {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      padding: 26px 22px;
+      margin: 30px 0;
+      box-shadow: none;
+    }
+
+    .ai-callout h2 {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* The AI tag reads as an eyebrow above the heading, not a badge. */
+    .ai-callout .ai-badge {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    /* The card carries its own border, so no rule is drawn against it. */
+    .ai-callout + section { border-top: 0; }
+
+    /* ---------- colophon ---------- */
+
+    footer {
+      border-top: 1px solid var(--hairline);
+      padding-top: 26px;
+      padding-bottom: 64px;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+
+    /* Nothing wide should ever push the page sideways. */
+    table, pre {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    /* ---------- wider than a phone ---------- */
+
+    @media (min-width: 640px) {
+      :root { --gutter: 32px; }
+
+      body { font-size: 17.5px; }
+
+      .masthead { padding-top: 88px; padding-bottom: 36px; }
+      .masthead-eyebrow { margin-bottom: 20px; }
+
+      section { padding: 44px 0; }
+      h2 { font-size: 1.45rem; }
+
+      .ai-callout { padding: 32px 30px; margin: 40px 0; }
+
+      footer { padding-top: 32px; padding-bottom: 88px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="masthead-eyebrow">Nami: Spending Tracker</p>
+  <h1>Support</h1>
+  <!-- ONE SPAN INSIDE THE STAMP, NOT BARE TEXT. `.stamp` is a flex row —
+       the accent rule is its ::before — so every text node and every <a>
+       left loose in here becomes its own flex column and the sentence
+       breaks into three stacked fragments. The span keeps it one item. -->
+  <p class="stamp">
+    <span>Email us at <a href="mailto:developer@meliolabs.io">developer@meliolabs.io</a>
+    and we aim to reply within two working days.</span>
+  </p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Connecting a bank</h2>
+    <p>
+      Connecting a bank is optional — Nami also works from statements you upload. The
+      connection is made through <strong>TrueLayer</strong>, the open banking provider
+      authorised and regulated by the Financial Conduct Authority; you choose your bank from
+      TrueLayer's list and log in at your bank's own app or website, so Nami never sees your
+      banking password. The access Nami asks for is read-only: it can read your accounts,
+      balances, cards and transactions, and it cannot make a payment or move money. Bank
+      linking is part of Pro, and you start a connection from the <strong>+</strong> on
+      Net Wealth.
+    </p>
+    <ul>
+      <li>
+        <strong>If a connection says "Needs reconnecting"</strong> — go to
+        <strong>Profile → Connected banks → Reconnect</strong>. Reconnect is not Refresh:
+        Refresh now asks your bank for today's balances under the permission you already
+        gave, while Reconnect walks the whole consent again. Reconnect is also what to use
+        when a card or your transactions never appear, because the permissions are fixed at
+        the moment you authorise them and only a new consent can widen them.
+      </li>
+      <li>
+        <strong>To hide an account, and to get it back</strong> — swipe the account's card on
+        Net Wealth and choose <strong>Hide this account</strong>. It stays off Net Wealth until
+        you show it again, and the bank stays connected throughout. Bring it back from
+        <strong>Profile → Connected banks → Hidden accounts → Show</strong>.
+      </li>
+      <li>
+        <strong>To disconnect</strong> — <strong>Profile → Connected banks → Disconnect</strong>.
+        That removes the whole connection from Nami: its accounts, its balances and the tokens
+        behind it, so nothing further can be fetched from your bank. Transactions already
+        synced stay in your account. Your bank keeps its own list of who you have shared with,
+        so withdraw the consent there too if you want it gone at both ends.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Statements</h2>
+    <p>
+      You can upload a PDF or CSV bank statement instead of connecting a bank, or as well as.
+      Statement uploads are on by default and switch themselves off once a bank is connected —
+      the switch is <strong>Profile → Statements → Statement uploads</strong>, and your own
+      answer sticks whatever you do with your bank connections afterwards. If you turn uploads
+      back on while a bank is connected, Nami warns you first: a statement for an account the
+      bank is already feeding counts that spending twice.
+    </p>
+    <p>
+      Nami shows you the file picker first, then the AI processing disclosure, and nothing is
+      sent until you agree. What is sent is the content of the file — transaction dates,
+      merchant names, amounts, and any text in the statement — so whatever is printed on the
+      statement, such as your name or an account number, goes with it.
+    </p>
+  </section>
+
+  <section>
+    <h2>Income and shifts</h2>
+    <p>
+      Nami reads your shifts from one calendar on your device. Nothing leaves your phone: the
+      rota itself is never uploaded. Set it up from Income → <strong>Set up your employer</strong>,
+      which asks for the calendar, the words your shift titles start with, your rate and unpaid
+      break rule, and your pay cycle.
+    </p>
+    <p>
+      If a figure differs from your rota app, it is almost always one of two things. Nami reads
+      the times on the rostered calendar event — start to end, less your unpaid break — not the
+      hours written into the event's notes and not the time you actually clocked. And if the
+      hours look right but the total does not, check the pay-cycle rule: work in the back half
+      of a month is often paid at the end of the following one, and the gap is usually the
+      cutoff rather than the hours.
+    </p>
+  </section>
+
+  <section>
+    <h2>Budgets and categories</h2>
+    <p>
+      The monthly budget is free for everyone — set it from
+      <strong>Profile → Budgeting → Monthly budget</strong>. One category spending limit is free
+      as well; Pro sets a limit on every category you spend in. A limit you have already set
+      stays editable and removable on any plan.
+    </p>
+    <p>
+      Your categories live in <strong>Profile → Budgeting → Categories</strong>: free includes
+      one of your own, Pro is unlimited. Built-in categories cannot be renamed. Category Rules,
+      in the same section, is where a merchant you have recategorised is remembered, so the next
+      transaction from them lands in the right place on its own.
+    </p>
+  </section>
+
+  <section>
+    <h2>Nami Pro</h2>
+    <p>
+      Your income from one employer, and your Net Wealth, are free for everyone. Pro adds the
+      spending side and up to four employers: unlimited statement analysis where free reads one
+      a month, a limit on every category, every month you have had rather than only the one you
+      are in, fifty Ask Nami questions a day rather than five, bank connections, the Sankey
+      money flow, Nami's Picks, unlimited categories of your own, merchant renaming that sticks,
+      and the savings projector.
+    </p>
+    <p>
+      When your Apple ID is eligible for one, Pro opens with a free trial of 14 days; the paywall
+      states the length and the price that follows before you commit, and a subscription renews
+      automatically unless it is cancelled at least 24 hours before the period ends. Manage or
+      cancel it in <strong>Settings → Apple ID → Subscriptions</strong>. If you have paid before
+      and the app has not caught up — a reinstall, or a new device — use
+      <strong>Restore Purchases</strong> at the bottom of the Pro screen.
+    </p>
+  </section>
+
+  <section>
+    <h2>Notifications</h2>
+    <p>
+      Everything Nami can send is in <strong>Profile → Notifications</strong>: a morning brief,
+      an evening sum-up of what you spent, budget alerts, a payday-eve nudge, your pay the
+      moment a shift ends, and repayment reminders. Each has its own switch, so you can keep
+      one and turn the rest off. If notifications for Nami are switched off in iOS Settings,
+      nothing on that screen can be delivered — it says so at the top and links you there.
+    </p>
+  </section>
+
+  <section>
+    <h2>Your data</h2>
+    <p>
+      What Nami collects, where it goes and why is set out in full in our
+      <a href="../">privacy policy</a>.
+    </p>
+    <p>
+      To remove everything, open <strong>Profile</strong> and tap <strong>Delete Account</strong>
+      at the bottom of the screen. That deletes your account and, with it, your transactions,
+      your uploaded statements, your budgets, category limits and rules, and any bank connection
+      along with the tokens behind it. It cannot be undone. If you would rather clear your
+      statements and keep your account, use <strong>Delete All Statements</strong> under
+      <strong>Profile → Privacy &amp; Data</strong> — that removes the uploads and their
+      transactions and leaves your account and settings as they are. The same section is where
+      you can re-read the AI processing disclosure and change your answer to it.
+    </p>
+    <p>
+      Nami does not currently offer a data export.
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Write to <a href="mailto:developer@meliolabs.io">developer@meliolabs.io</a>. To save a
+      round trip, tell us which device you are on and which version of iOS it is running, then
+      the screen you were on, what you expected, and what happened instead. If it is about a
+      bank connection, name the bank; if it is about a statement, say which bank produced the
+      file and whether it was a PDF or a CSV.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    &copy; 2026 Melio Labs Ltd. Nami: Spending Tracker.
+    &middot; <a href="../">Privacy policy</a>
+  </p>
+</footer>
+
+</body>
+</html>
