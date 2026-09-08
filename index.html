@@ -120,10 +120,13 @@
     <h2>Overview</h2>
     <p>
       Nami: Spending Tracker ("we", "our", or "us") is a personal finance app that helps you
-      understand your spending by analysing bank statements using AI. This policy explains
-      what data we collect, how we use it, which third parties we share it with, and your rights.
+      understand your spending by analysing your transactions using AI. Your transactions
+      reach Nami in one of two ways: through a read-only open banking connection to a bank
+      you choose to connect, or from a bank statement you upload yourself. This policy
+      explains what data we collect, how we use it, which third parties we share it with,
+      and your rights.
     </p>
-    <p>Last updated: 28 April 2026</p>
+    <p>Last updated: 8 September 2026</p>
   </section>
 
   <section class="ai-callout">
@@ -133,22 +136,30 @@
     </h2>
     <ul>
       <li>
-        <strong>What we share:</strong> the transaction data inside any bank statement
-        (PDF or CSV) you choose to upload — dates, merchant names, amounts, and surrounding
-        statement text.
+        <strong>What we share:</strong> transaction data, whichever way it reached Nami.
+        From a connected bank, that is the direction, amount, description and merchant of a
+        transaction. From a statement (PDF or CSV) you upload, it is the content of that
+        file — dates, merchant names, amounts, and surrounding statement text.
       </li>
       <li>
-        <strong>Who it goes to:</strong> Google's Gemini AI, used to extract and categorise
-        your transactions and to generate the spending insights you see in the app.
+        <strong>Who it goes to:</strong> a third-party AI service, named in full in the
+        <a href="#ai-processing">AI Processing</a> section below, used to categorise your
+        transactions and to generate the spending insights you see in the app.
       </li>
       <li>
-        <strong>Retention:</strong> Google does not retain your statement data after
+        <strong>What never goes with it:</strong> your name, your email address, your
+        account identifier, and your bank account numbers. A transaction is sent with an
+        opaque row reference and nothing that identifies you.
+      </li>
+      <li>
+        <strong>Retention:</strong> the AI provider does not retain your data after
         processing and does not use it to train AI models.
       </li>
       <li>
-        <strong>Your control:</strong> the first time you upload a statement, Nami asks for
-        your explicit consent before sending anything. You can delete all your data at any
-        time from <strong>Profile → Privacy &amp; Data → Delete Account</strong>.
+        <strong>Your control:</strong> Nami asks for your consent before any of your data is
+        sent for AI processing. That consent is recorded against your account and checked
+        again on our own server on every request. You can delete all your data at any time
+        from <strong>Profile → Privacy &amp; Data → Delete Account</strong>.
       </li>
     </ul>
     <p>
@@ -165,25 +176,47 @@
       <li><strong>Account identifier</strong> — a unique opaque user ID is created for your account.
         This is the only identifier we use to associate analytics events with your account.</li>
       <li>
+        <strong>Bank connection data</strong> — if you choose to connect a bank, we receive
+        from that bank, through our open banking provider: the names and types of your
+        accounts, their balances, your cards in masked form (the card's name and its last
+        four digits only), and your transactions — date, description, merchant and amount.
+        We never see or ask for your online banking login details, and we do not store your
+        full card number, account number or sort code. This is fully described in
+        <a href="#open-banking">Connecting a Bank (Open Banking)</a> below.
+      </li>
+      <li>
         <strong>Bank statement content</strong> — when you upload a PDF or CSV bank statement,
-        the content of that file is sent to Google's Gemini AI service to extract and categorise
+        the content of that file is sent to our AI provider to extract and categorise
         your transactions. You will be asked for your consent before this occurs.
       </li>
       <li>
-        <strong>Financial transaction data</strong> — the transactions extracted from your
-        statements are stored securely in your account.
+        <strong>Financial transaction data</strong> — the transactions synced from a
+        connected bank, and those extracted from your statements, are stored securely in
+        your account.
       </li>
       <li>
         <strong>Subscription status</strong> — if you purchase a subscription, RevenueCat records
-        your purchase and renewal status against an anonymous user ID so we can unlock paid
-        features. Apple processes the payment itself; we never see your card details.
+        your purchase and renewal status against the account identifier described above — the
+        opaque ID that carries no name or email but does identify your account — so we can
+        unlock paid features. Apple processes the payment itself; we never see your card details.
+      </li>
+      <li>
+        <strong>Notification token</strong> — if you allow notifications, Apple issues a token
+        that identifies this installation of Nami on your device. We store it against your
+        account so that notifications can be delivered to you. It is deleted when you sign
+        out, and removed along with everything else if you delete your account.
       </li>
     </ul>
     <p>
       We do not collect your phone number, location, contacts, photo library, or payment card
-      information. If you sign in with Apple or Google, those providers may pass your name and
-      profile picture to the app during the sign-in handshake, but Nami does not retain or
-      transmit your name or profile picture beyond that initial response.
+      information. If you use shift pay, Nami reads your work calendar on your device to work
+      out what your shifts earned — the events themselves are never uploaded. What is saved to
+      your account is the shift's start and end times, the hours and the pay Nami worked out,
+      and an internal reference to the calendar entry so the same shift is not counted twice.
+      No event title, location, notes or attendee ever leaves your device. If you sign in
+      with Apple or Google, those providers may pass your name and profile picture to the app
+      during the sign-in handshake, but Nami does not retain or transmit your name or profile
+      picture beyond that initial response.
     </p>
   </section>
 
@@ -220,66 +253,173 @@
     <h2>How We Use Your Data</h2>
     <ul>
       <li>To provide the core features of the app (transaction summaries, insights, categorisation).</li>
+      <li>To keep a connected bank's accounts, balances and transactions up to date in the app.</li>
       <li>To securely store your transactions so they persist across sessions.</li>
-      <li>To generate AI-powered spending insights via Google Gemini AI.</li>
+      <li>To generate AI-powered spending insights via our AI provider.</li>
     </ul>
     <p>
       We do not use your data for advertising, profiling, or any purpose beyond app functionality.
     </p>
   </section>
 
-  <section id="ai-processing" class="ai-section">
-    <h2>Third-Party AI Processing — Google Gemini</h2>
+  <section id="open-banking">
+    <h2>Connecting a Bank (Open Banking)</h2>
     <p>
-      Nami uses <strong>Google's Gemini AI</strong> to read and extract transactions from the
-      bank statements you upload, and to generate the spending insights and category breakdowns
-      you see in the app. Here is exactly what happens:
+      Connecting a bank is optional — Nami works without it, using statements you upload.
+      If you do connect one, the connection is made through
+      <strong>TrueLayer</strong>, a UK open banking provider authorised and regulated by the
+      Financial Conduct Authority. Here is exactly what happens:
     </p>
     <ul>
       <li>
-        <strong>What data is sent:</strong> The full text content of your uploaded bank statement
+        <strong>You authorise it at your own bank.</strong> Nami hands you to TrueLayer,
+        which hands you to your bank's own website or app, where you log in and approve the
+        connection. Your banking credentials are entered at your bank and are never seen,
+        handled or stored by Nami.
+      </li>
+      <li>
+        <strong>What we receive:</strong> the names and types of your accounts, their
+        balances, your cards in masked form (the card's name and its last four digits),
+        and your transactions — date, description, merchant name and amount.
+      </li>
+      <li>
+        <strong>Read-only, and no ability to move money.</strong> The access we ask for is
+        account information only. Nami cannot make a payment, move money between accounts,
+        or change anything at your bank — the connection can only read.
+      </li>
+      <li>
+        <strong>We deliberately do not store the account holder name.</strong> Your bank can
+        return the name it holds on file for you; Nami stores that field empty, by design,
+        so it never enters our database.
+      </li>
+      <li>
+        <strong>How long the connection lasts:</strong> around 90 days is the usual ceiling
+        for a UK open banking consent, but it is your bank that sets the actual expiry date
+        on the consent you give it. Nami records whatever date your bank returns and stops
+        syncing when it passes; the connection then shows as needing reconnection in the app.
+        We cannot extend or renew it ourselves — only re-authorising at your bank does that,
+        from <strong>Profile → Connected banks → Reconnect</strong>.
+      </li>
+      <li>
+        <strong>Where the keys to the connection live:</strong> the access and refresh tokens
+        issued for your connection are held on our server, in a table that no app user and no
+        client can read — only our backend service itself can. They are never sent to your
+        device and never shared with anyone else.
+      </li>
+      <li>
+        <strong>How to disconnect:</strong>
+        <strong>Profile → Connected banks → Disconnect</strong>. That removes the whole
+        connection from Nami — its accounts and balances, and the stored access and refresh
+        tokens, so nothing further can be fetched from your bank. Transactions already synced
+        stay in your account; deleting your account removes those along with everything else.
+        Disconnecting in Nami does not cancel the consent at your bank's end: your bank keeps
+        its own record of who you have shared with, and you can withdraw it there too.
+      </li>
+    </ul>
+    <p>
+      For how TrueLayer handles the data it passes between your bank and Nami, see the
+      <a href="https://truelayer.com/privacy/" target="_blank">TrueLayer privacy notice</a>.
+    </p>
+  </section>
+
+  <section id="ai-processing" class="ai-section">
+    <h2>Third-Party AI Processing</h2>
+    <p>
+      Nami sends transaction data to a third-party AI service to categorise it and to generate
+      the spending insights and category breakdowns you see in the app. This applies to both
+      routes your transactions can take into Nami — a connected bank and an uploaded
+      statement. Here is exactly what happens:
+    </p>
+    <ul>
+      <li>
+        <strong>What is sent from a connected bank:</strong> only the transactions our own
+        rules could not categorise on their own, and for each one only five fields — an
+        opaque row reference, the direction ("debit" or "credit"), the amount in pence, the
+        description text, and the merchant name. No name, no email address, no user
+        identifier and no account number ever travels with it.
+      </li>
+      <li>
+        <strong>What is sent from a statement you upload:</strong> the content of that file
         (PDF or CSV) — including transaction dates, merchant names, amounts, and any
-        surrounding statement text. When you ask Nami a question through the in-app
-        assistant ("Ask Nami"), your question and the relevant transaction context are also
-        sent so the assistant can answer.
+        surrounding statement text — so the transactions can be read out of it. When you ask
+        Nami a question through the in-app assistant ("Ask Nami"), your question and the
+        relevant transaction context are also sent so the assistant can answer, together with
+        settings such as your currency, budget and category names. Your name and email address
+        are not included.
       </li>
       <li>
-        <strong>Who it is sent to:</strong> Google LLC, via the Gemini API, proxied through our
-        secure server. Your device never communicates directly with Google.
+        <strong>How it is sent:</strong> through our own secure server. Your device never
+        communicates with the AI provider directly, and the API key stays on our server.
       </li>
       <li>
-        <strong>Purpose:</strong> To extract transaction descriptions, amounts, dates, and
-        categories from your statement, and to generate the personalised spending insights,
-        category summaries, and assistant answers Nami shows you.
+        <strong>Purpose:</strong> To extract transaction descriptions, amounts, dates and
+        categories, and to generate the personalised spending insights, category summaries
+        and assistant answers Nami shows you.
       </li>
       <li>
-        <strong>Retention:</strong> Google does not store your statement data after processing
-        and does not use it to train AI models. We only retain the extracted transaction
-        records in your account so they appear when you reopen the app.
-      </li>
-      <li>
-        <strong>Your consent:</strong> You are shown an explicit consent prompt the first time
-        you upload a statement, explaining this processing. You must agree before any data is
-        sent. You can review the same disclosure at any time from
+        <strong>Your consent:</strong> Nami asks for your consent before any of your data is
+        sent for AI processing, and you must agree before anything is sent. Your agreement is
+        recorded against your account on our server and re-checked there on every single
+        request — for transactions from a connected bank as well as for statements — so no
+        processing can happen without it. The disclosure you agree to describes the statement
+        upload, and you can read it again at any time from
         <strong>Profile → Privacy &amp; Data → AI processing</strong>.
       </li>
       <li>
-        <strong>Your right to delete:</strong> You can delete every transaction Nami has
-        extracted, along with your account, at any time from
+        <strong>Your right to delete:</strong> You can delete every transaction Nami holds,
+        along with your account, at any time from
         <strong>Profile → Privacy &amp; Data → Delete Account</strong>. Deletion is permanent
         and removes your data from our servers.
       </li>
     </ul>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         AI PROVIDER BLOCK — THE ONLY PLACE THE AI PROVIDER IS NAMED.
+
+         WHEN THE PROVIDER CHANGES (Google Gemini → Anthropic), EDIT ONLY
+         THE SINGLE <p> BETWEEN THIS COMMENT AND THE "END AI PROVIDER
+         BLOCK" COMMENT BELOW. Everything to change is inside it:
+           1. the company name        ("Google LLC")
+           2. the product name        ("Gemini", in "the Gemini API")
+           3. the retention sentence  ("Google does not store ... train AI models")
+           4. the closing sentence naming the company again
+           5. the privacy-policy link (href + link text)
+
+         NOTHING ELSE ON THIS PAGE NAMES THE AI PROVIDER. The rest of the
+         page says "our AI provider" / "the AI provider" on purpose, so the
+         swap is this block and nothing else.
+
+         TWO THINGS TO RE-VERIFY, THOUGH THEY CARRY NO NAME:
+           - the "Retention" bullet in the "At a glance" callout near the
+             top of the page, which repeats the no-retention / no-training
+             claim without naming anyone;
+           - the sentence in "Data Storage & Security" about the AI
+             provider's API key being stored server-side.
+
+         Also update, outside this file, the in-app AI consent screen
+         (AIConsentView) so the two disclosures keep saying the same thing.
+         ══════════════════════════════════════════════════════════════════ -->
     <p>
-      Google's data processing provides equivalent privacy protections as required by applicable
-      laws. For more information, see the
+      The AI provider Nami currently uses is <strong>Google LLC</strong>, via the Gemini API.
+      Google does not store your data after processing and does not use it to train AI
+      models; we only retain the resulting transaction records in your account so they appear
+      when you reopen the app. Google's data processing provides equivalent privacy
+      protections as required by applicable laws. For more information, see the
       <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.
     </p>
+    <!-- ═════════════════════ END AI PROVIDER BLOCK ═════════════════════ -->
   </section>
 
   <section>
     <h2>Other Third-Party Services</h2>
     <ul>
+      <li>
+        <strong>TrueLayer</strong> — the FCA-authorised UK open banking provider that carries
+        the connection between your bank and Nami, if you choose to connect one. It is
+        read-only account information access, described in full in
+        <a href="#open-banking">Connecting a Bank (Open Banking)</a> above.
+        <a href="https://truelayer.com/privacy/" target="_blank">TrueLayer Privacy Notice</a>
+      </li>
       <li>
         <strong>Supabase</strong> — secure cloud database and authentication.
         Your data is stored in Supabase and protected by Row Level Security, meaning
@@ -296,20 +436,23 @@
         <strong>Google Sign-In</strong> — used only when you choose to Sign in with Google.
         Google's iOS SDK handles the OAuth flow and returns an identity token, your email,
         and your Google account ID, which we exchange for a Supabase session. This is a
-        separate service from the Gemini AI integration described above and uses a
-        different Google product.
+        separate, sign-in-only service and is unrelated to the AI processing described above.
         <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
       </li>
       <li>
         <strong>RevenueCat</strong> — used to manage in-app subscription purchases. RevenueCat
-        receives an anonymous user ID and your purchase events from Apple's StoreKit; it
-        does not see your name, email, or transaction data.
+        receives your opaque Supabase account ID — pseudonymous rather than anonymous: it
+        carries no name and no email, but it does identify your account — along with your
+        purchase events from Apple's StoreKit. It does not see your name, email, or
+        transaction data.
         <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
       </li>
       <li>
-        <strong>PostHog</strong> — used for anonymous product analytics (app opens, feature usage,
-        sign-in method). Events are tagged with your opaque Supabase user ID only — never your
-        email, name, or any financial data.
+        <strong>PostHog</strong> — used for product analytics (app opens, feature usage,
+        sign-in method). Events are tagged with your opaque Supabase account ID only. That ID
+        is pseudonymous rather than anonymous — it carries no name and no email, but it does
+        identify your account. PostHog never receives your email, your name, or any financial
+        data.
         <a href="https://posthog.com/privacy" target="_blank">PostHog Privacy Policy</a>
       </li>
     </ul>
@@ -320,7 +463,9 @@
     <p>
       Your data is stored in Supabase (EU region) with Row Level Security enforced —
       meaning no other user can access your data. All data is transmitted over HTTPS.
-      The Gemini API key is stored server-side and never included in the app binary.
+      The AI provider's API key is stored server-side and never included in the app binary.
+      The tokens behind a bank connection are held in a separate table that no client can
+      read at all — only our backend service itself can.
     </p>
   </section>
 
@@ -329,8 +474,9 @@
     <p>
       Your data is retained for as long as you have an account. You can delete your
       account at any time from the <strong>Profile</strong> tab inside the app.
-      Deleting your account permanently removes all your data from our servers and
-      cannot be undone.
+      Deleting your account permanently removes all your data from our servers —
+      including your transactions, any connected bank and the access tokens behind it —
+      and cannot be undone.
     </p>
   </section>
 
@@ -340,7 +486,14 @@
     <ul>
       <li>Access the data we hold about you.</li>
       <li>Delete your account and all associated data at any time, directly in the app.</li>
-      <li>Withdraw consent for AI processing by not uploading statements.</li>
+      <li>
+        Disconnect a bank at any time from <strong>Profile → Connected banks</strong>, and
+        withdraw the consent itself at your bank.
+      </li>
+      <li>
+        Stop AI processing by disconnecting your bank and not uploading statements, or by
+        contacting us.
+      </li>
       <li>Contact us with any privacy-related questions.</li>
     </ul>
   </section>
