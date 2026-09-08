@@ -4,114 +4,275 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy – Nami: Spending Tracker</title>
+  <meta name="description" content="Privacy policy for Nami: Spending Tracker by Melio Labs Ltd." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#FCFCFB" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
   <style>
+    /* ------------------------------------------------------------------
+       RevivalTheme — paper and ink.
+       Light tokens on :root, dark tokens swapped in prefers-color-scheme
+       only (GitHub Pages does not stamp a theme attribute).
+       One accent on the page: the "Last updated" mark.
+       ------------------------------------------------------------------ */
+    :root {
+      color-scheme: light;
+
+      --paper:    #FCFCFB;
+      --card:     #FFFDFA;
+      --ink:      #2E2C27;
+      --ink-soft: #6B6A63;
+      --ink-grey: #B4B3A8;
+      --hairline: #E4E3DC;
+      --accent:   #C6613F;
+
+      --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino,
+               "Hoefler Text", Georgia, "Times New Roman", serif;
+      --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+
+      --measure: 65ch;
+      --gutter: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+
+        --paper:    #171613;
+        --card:     #201E1A;
+        --ink:      #EBE8E0;
+        --ink-soft: #9C988C;
+        --ink-grey: #6F6B60;
+        --hairline: #33302A;
+        --accent:   #DE8460;
+      }
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      background: var(--paper);
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      line-height: 1.7;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    header {
-      background: linear-gradient(135deg, #6b21e8 0%, #9333ea 100%);
-      color: white;
-      padding: 48px 24px 40px;
-      text-align: center;
+    /* One column, one measure, shared by masthead, body and colophon. */
+    .masthead,
+    main,
+    footer {
+      max-width: var(--measure);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
     }
 
-    header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    header p  { font-size: 1rem; opacity: 0.85; }
+    /* ---------- masthead ---------- */
 
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
+    .masthead {
+      padding-top: 56px;
+      padding-bottom: 30px;
     }
 
-    section {
-      background: white;
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    .masthead-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
     }
+
+    .masthead h1 {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 100;
+      font-weight: 500;
+      font-size: clamp(2.15rem, 1.55rem + 2.6vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      color: var(--ink);
+    }
+
+    /* ---------- body ---------- */
+
+    main { padding-bottom: 0; }
+
+    /* Sections are separated by a rule, never boxed. */
+    section { padding: 34px 0; }
+    section + section { border-top: 1px solid var(--hairline); }
 
     h2 {
-      font-size: 1.1rem;
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 32;
       font-weight: 600;
-      margin-bottom: 12px;
-      color: #6b21e8;
+      font-size: 1.32rem;
+      line-height: 1.25;
+      letter-spacing: -0.012em;
+      text-wrap: balance;
+      color: var(--ink);
+      margin-bottom: 16px;
     }
 
-    p  { margin-bottom: 12px; font-size: 0.95rem; color: #333; }
+    p {
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
     p:last-child { margin-bottom: 0; }
 
+    strong { font-weight: 600; color: var(--ink); }
+
     ul {
-      padding-left: 20px;
-      margin-bottom: 12px;
-      font-size: 0.95rem;
-      color: #333;
+      list-style: disc;
+      padding-left: 1.15em;
+      margin-bottom: 16px;
     }
 
-    ul li { margin-bottom: 6px; }
+    ul:last-child { margin-bottom: 0; }
 
-    a { color: #6b21e8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    li {
+      margin-bottom: 12px;
+      padding-left: 0.15em;
+    }
 
-    /* Highlighted callout for the AI processing summary at the top.
-       Distinct from the regular section card so reviewers and users
-       can find the AI disclosure at a glance — Apple's 5.1.1(i)
-       feedback specifically calls out clarity of AI data handling. */
+    li:last-child { margin-bottom: 0; }
+    li::marker { color: var(--ink-soft); }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--hairline);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 120ms ease;
+    }
+
+    a:hover { text-decoration-color: var(--ink); }
+
+    a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* The single accent on the page: the mark against the revision date. */
+    .stamp {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 22px;
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      color: var(--ink-soft);
+    }
+
+    .stamp::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 20px;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--accent);
+      transform: translateY(-0.28em);
+    }
+
+    /* ---------- the "At a glance" card ---------- */
+
     .ai-callout {
-      background: linear-gradient(135deg, #f5edff 0%, #ede4ff 100%);
-      border-left: 4px solid #6b21e8;
+      background: var(--card);
+      border: 1px solid var(--hairline);
       border-radius: 16px;
-      padding: 24px 28px;
-      margin-bottom: 24px;
+      padding: 26px 22px;
+      margin: 30px 0;
+      box-shadow: none;
     }
 
     .ai-callout h2 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
+      display: block;
+      margin-bottom: 16px;
     }
 
+    /* The AI tag reads as an eyebrow above the heading, not a badge. */
     .ai-callout .ai-badge {
-      background: #6b21e8;
-      color: white;
+      display: block;
+      font-family: var(--sans);
       font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 4px 10px;
-      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
     }
 
-    /* Highlighted variant for the in-depth AI processing section
-       further down. Subtle purple border + tinted heading so the
-       section reads as the policy's most important block without
-       breaking the visual rhythm of the rest of the document. */
-    .ai-section {
-      border: 1.5px solid rgba(107, 33, 232, 0.25);
-      box-shadow: 0 4px 12px rgba(107, 33, 232, 0.08);
-    }
+    /* The card carries its own border, so no rule is drawn against it. */
+    .ai-callout + section { border-top: 0; }
+
+    /* ---------- colophon ---------- */
 
     footer {
-      text-align: center;
+      border-top: 1px solid var(--hairline);
+      padding-top: 26px;
+      padding-bottom: 64px;
+    }
+
+    footer p {
       font-size: 0.8rem;
-      color: #888;
-      padding-bottom: 40px;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+
+    /* Nothing wide should ever push the page sideways. */
+    table, pre {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    /* ---------- wider than a phone ---------- */
+
+    @media (min-width: 640px) {
+      :root { --gutter: 32px; }
+
+      body { font-size: 17.5px; }
+
+      .masthead { padding-top: 88px; padding-bottom: 36px; }
+      .masthead-eyebrow { margin-bottom: 20px; }
+
+      section { padding: 44px 0; }
+      h2 { font-size: 1.45rem; }
+
+      .ai-callout { padding: 32px 30px; margin: 40px 0; }
+
+      footer { padding-top: 32px; padding-bottom: 88px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Nami: Spending Tracker</h1>
-  <p>Privacy Policy</p>
+<header class="masthead">
+  <p class="masthead-eyebrow">Nami: Spending Tracker</p>
+  <h1>Privacy Policy</h1>
 </header>
 
 <main>
@@ -126,7 +287,7 @@
       explains what data we collect, how we use it, which third parties we share it with,
       and your rights.
     </p>
-    <p>Last updated: 8 September 2026</p>
+    <p class="stamp">Last updated: 8 September 2026</p>
   </section>
 
   <section class="ai-callout">
