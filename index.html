@@ -526,6 +526,22 @@
         transaction, which is usually a business.
       </li>
       <li>
+        <strong>Connected brokers:</strong> if you connect a broker account, such as Trading 212,
+        you give us an API key and secret that you create in that broker's own app. We send
+        them to our server over an encrypted connection, store them encrypted, and use them
+        only to read four things: your account summary, how many holdings you have, your
+        dividend history and your transaction history. We never hold a key that can place,
+        change or cancel a trade, and we refuse a key that could. We read your account about
+        four times a day and keep the balance, the number of holdings, the dividends and the
+        cash interest we read, so that your net wealth and your income are up to date when you
+        open the app. We do not keep a list of your individual holdings. Your key and secret
+        are never sent to our AI provider, and neither is the name of any share you own. You
+        can disconnect at any time in the app, which deletes the key and secret from our
+        servers, and you can delete the key in the Trading 212 app, which stops our access
+        instantly. We are not partnered with Trading 212, and the values we show come from
+        their own last conversion rather than from a live market price.
+      </li>
+      <li>
         <strong>How it is sent:</strong> through our own secure server. Your device never
         communicates with the AI provider directly, and the API key stays on our server.
       </li>
