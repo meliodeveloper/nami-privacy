@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Nami: Spending Tracker</title>
+  <title>Privacy Policy, Nami: Spending Tracker</title>
   <meta name="description" content="Privacy policy for Nami: Spending Tracker by Melio Labs Ltd." />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#FCFCFB" media="(prefers-color-scheme: light)" />
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
   <style>
     /* ------------------------------------------------------------------
-       RevivalTheme — paper and ink.
+       RevivalTheme: paper and ink.
        Light tokens on :root, dark tokens swapped in prefers-color-scheme
        only (GitHub Pages does not stamp a theme attribute).
        One accent on the page: the "Last updated" mark.
@@ -280,107 +280,197 @@
   <section>
     <h2>Overview</h2>
     <p>
-      Nami: Spending Tracker ("we", "our", or "us") is a personal finance app that helps you
-      understand your spending by analysing your transactions using AI. Your transactions
-      reach Nami in one of two ways: through a read-only open banking connection to a bank
-      you choose to connect, or from a bank statement you upload yourself. This policy
-      explains what data we collect, how we use it, which third parties we share it with,
-      and your rights.
+      Nami: Spending Tracker ("we", "our", or "us") is a personal finance app that shows you
+      where your money goes, what you have earned and what is on its way. It uses AI to
+      categorise your transactions, to read the statements you upload, to answer the
+      questions you ask it and to write your morning brief. Your transactions reach Nami in
+      three ways: through a read-only open banking connection to a bank you choose to
+      connect, from a bank statement you upload yourself, or from a purchase your own Tap to
+      Log automation hands to Nami on your phone. This policy explains what data we collect,
+      how we use it, which third parties receive it and why, and your rights.
     </p>
-    <p class="stamp">Last updated: 11 September 2026</p>
+    <p>
+      Nami is made by Melio Labs Ltd, a company registered in England and Wales (company
+      number 16136624). Melio Labs Ltd is the controller of your personal data under UK
+      data protection law, and you can reach us at the address at the foot of this page.
+    </p>
+    <p class="stamp">Last updated: 5 October 2026</p>
   </section>
 
   <section class="ai-callout">
     <h2>
       <span class="ai-badge">AI</span>
-      At a glance — AI data processing
+      At a glance: AI data processing
     </h2>
     <ul>
       <li>
-        <strong>What we share:</strong> transaction data, whichever way it reached Nami.
-        From a connected bank, that is the direction, amount, description and merchant of a
-        transaction. From a statement (PDF or CSV) you upload, it is the content of that
-        file — dates, merchant names, amounts, and surrounding statement text.
+        <strong>What we share:</strong> from a connected bank, the transactions our own rules
+        could not categorise, each with its direction, amount, description and merchant. From
+        a statement (PDF or CSV) you upload, the file as it is. When you ask Nami a question,
+        your question and the figures it needs to answer it. Each morning, the figures your
+        morning brief is built from.
       </li>
       <li>
-        <strong>Who it goes to:</strong> a third-party AI service, named in full in the
-        <a href="#ai-processing">AI Processing</a> section below, used to categorise your
-        transactions and to generate the spending insights you see in the app.
+        <strong>Who it goes to:</strong> Anthropic, through its Claude models, always by way
+        of our own server. The full breakdown is in the
+        <a href="#ai-processing">AI Processing</a> section below.
       </li>
       <li>
-        <strong>What never goes with it:</strong> your bank login. From a connected bank,
-        nothing that identifies you goes either: a transaction is sent with an opaque row
-        reference and no name, email address, account identifier or account number. A
-        statement is different. It is sent as it is, so whatever is printed on it, such
-        as your name or an account number, goes with it.
+        <strong>What we never add:</strong> your bank login, your full card numbers, your
+        account numbers, your email address or your password. A transaction from a connected
+        bank is sent with an opaque row reference, and we add nothing that names you, but its
+        description and merchant go as your bank wrote them, so a transfer can carry a
+        person's name or a reference your bank printed on it. A statement is sent as it is,
+        so whatever is printed on it, such as your name or an account number, goes with it.
       </li>
       <li>
-        <strong>Retention:</strong> the AI provider does not use your data to train AI
-        models, and keeps it only for a short period, to check for misuse and to meet its
-        legal duties.
+        <strong>Retention:</strong> Anthropic does not use your data to train its models. It
+        is deleted within 30 days in normal use, unless Anthropic has to keep it longer to
+        enforce its usage rules or by law.
       </li>
       <li>
-        <strong>Your control:</strong> Nami asks for your consent before any of your data is
-        sent for AI processing. That consent is recorded against your account and checked
-        again on our own server on every request. You can delete all your data at any time
-        from <strong>Profile → Privacy &amp; Data → Delete Account</strong>.
+        <strong>Your control:</strong> nothing is sent for AI processing until you agree. Your
+        agreement is recorded against your account and checked again on our own server before
+        every request. You can turn AI processing off at any time from
+        <strong>Profile, Privacy &amp; data, AI processing</strong>, while you are online (see
+        <a href="#ai-processing">AI Processing</a> for why), and delete your account and the
+        data Nami holds against it from
+        <strong>Profile, Privacy &amp; data, Delete account</strong>.
       </li>
     </ul>
-    <p>
-      The full breakdown is in the <a href="#ai-processing">AI Processing</a> section below.
-    </p>
   </section>
 
   <section>
     <h2>Data We Collect</h2>
     <ul>
-      <li><strong>Email address</strong> — used to create and manage your account. Provided either
+      <li><strong>Email address:</strong> used to create and manage your account. Provided either
         when you sign up with email and password, or returned to us by Apple or Google when you
         choose Sign in with Apple or Sign in with Google.</li>
-      <li><strong>Account identifier</strong> — a unique opaque user ID is created for your account.
-        This is the only identifier we use to associate analytics events with your account.</li>
+      <li><strong>Account identifier:</strong> a unique opaque user ID is created for your account.
+        Once you have signed in, it is the only identifier our analytics and our subscription
+        provider know your account by. Before you sign in, each of them uses a random
+        identifier of its own, which is joined to your account identifier when you sign in.</li>
       <li>
-        <strong>Bank connection data</strong> — if you choose to connect a bank, we receive
+        <strong>Your name, in two cases only:</strong> if you sign in with Google, the name and
+        profile picture on your Google account are stored with your account. If you upload a
+        statement, the account holder's name that Nami reads from it is stored with the
+        transactions read from it. Nami asks for the first name only, but it stores what the
+        reading returns.
+      </li>
+      <li>
+        <strong>Bank connection data:</strong> if you choose to connect a bank, we receive
         from that bank, through our open banking provider: the names and types of your
         accounts, their balances, your cards in masked form (the card's name and its last
-        four digits only), and your transactions — date, description, merchant and amount.
+        four digits only), and your transactions (date, description, merchant and amount).
         We never see or ask for your online banking login details, and we do not store your
         full card number, account number or sort code. This is fully described in
         <a href="#open-banking">Connecting a Bank (Open Banking)</a> below.
       </li>
       <li>
-        <strong>Bank statement content</strong> — when you upload a PDF or CSV bank statement,
-        the content of that file is sent to our AI provider to extract and categorise
-        your transactions. You will be asked for your consent before this occurs.
+        <strong>Bank statement content:</strong> statement uploads are off until you turn
+        them on. When you upload a PDF or CSV bank statement, the file is sent to our AI
+        provider to extract and categorise your transactions, after you have agreed to AI
+        processing. The transactions read from it are stored in your account with the bank's
+        name.
       </li>
       <li>
-        <strong>Financial transaction data</strong> — the transactions synced from a
+        <strong>Financial transaction data:</strong> the transactions synced from a
         connected bank, and those extracted from your statements, are stored securely in
-        your account.
+        your account, along with the categories, merchant rules and merchant names you set.
       </li>
       <li>
-        <strong>Subscription status</strong> — if you purchase a subscription, RevenueCat records
-        your purchase and renewal status against the account identifier described above — the
-        opaque ID that carries no name or email but does identify your account — so we can
-        unlock paid features. Apple processes the payment itself; we never see your card details.
+        <strong>Budgets and settings:</strong> your monthly budget, your category limits,
+        the categories you create, your currency, your time zone, your morning brief time and
+        whether Nami is drawn light or dark. Our server uses these to write your morning
+        brief, to send budget alerts and to keep the Lock Screen cards up to date while the
+        app is closed.
       </li>
       <li>
-        <strong>Notification token</strong> — if you allow notifications, Apple issues a token
-        that identifies this installation of Nami on your device. We store it against your
-        account so that notifications can be delivered to you. It is deleted when you sign
-        out, and removed along with everything else if you delete your account.
+        <strong>Income and shifts:</strong> for an employer you set up, its name, the words
+        your shift titles start with, your hourly rate, your break rule, your pay day rules
+        and which calendar holds your rota; for each shift you have worked, its start and end
+        times, its hours, the pay Nami worked out for it and an internal reference to the
+        calendar entry, so the same shift is not counted twice; any payslip figures you
+        enter; and income sources Nami found in your bank transactions, named after the
+        counterparty on them.
+      </li>
+      <li>
+        <strong>Net Wealth:</strong> accounts you add yourself, the payments you record
+        against them, any repayment plan you set, and a daily record of your net wealth so
+        the chart can show it moving.
+      </li>
+      <li>
+        <strong>Ask Nami and the morning brief:</strong> anything you ask Nami to remember,
+        a count of the questions you ask each day, and each morning's brief once it is
+        written. Your chats themselves stay on your phone and are not uploaded, unless you
+        ask Nami to look an earlier one up.
+      </li>
+      <li>
+        <strong>Subscription status:</strong> if you purchase a subscription, RevenueCat records
+        your purchase and renewal status against the account identifier described above, so
+        we can unlock paid features. Apple processes the payment itself; we never see your
+        card details.
+      </li>
+      <li>
+        <strong>Notification tokens:</strong> if you allow notifications, Apple issues a token
+        that identifies this installation of Nami on your device, and further tokens for each
+        Lock Screen card. We store them against your account so that notifications can be
+        delivered and the cards kept current. Nami removes them when you sign out, if your
+        phone is online at the time; a token left behind is removed when Apple reports that it
+        no longer works, and every token goes with everything else if you delete your
+        account.
+      </li>
+      <li>
+        <strong>Rota feed link, only if you add one:</strong> if your rota is a published
+        calendar feed and you paste its link into Nami, we store the link, the words your
+        shift titles start with, and the start and end times of the events in it that match
+        them. Our server fetches the whole feed itself about every five minutes to tell you
+        when your rota changes, so everything in the feed, titles included, passes through
+        our server each time it is read. It matches your shifts by the start of their titles,
+        keeps only their start and end times, and keeps no event titles. You can remove the
+        link at any time.
       </li>
     </ul>
     <p>
-      We do not collect your phone number, location, contacts, photo library, or payment card
-      information. If you use shift pay, Nami reads your work calendar on your device to work
-      out what your shifts earned — the events themselves are never uploaded. What is saved to
-      your account is the shift's start and end times, the hours and the pay Nami worked out,
-      and an internal reference to the calendar entry so the same shift is not counted twice.
-      No event title, location, notes or attendee ever leaves your device. If you sign in
-      with Apple or Google, those providers may pass your name and profile picture to the app
-      during the sign-in handshake, but Nami does not retain or transmit your name or profile
-      picture beyond that initial response.
+      Nami does not ask for your phone number, location, contacts or photo library, and it
+      never sees a full payment card number.
+    </p>
+    <p>
+      <strong>Your calendar.</strong> If you use shift pay, Nami reads the calendar on your
+      phone to work out what your shifts earn. The titles, locations, notes and attendees of
+      the events in the calendar on your phone never leave your device. A rota feed you add
+      is the one exception, because our server reads the published feed itself, as described
+      above. Shift times do leave your phone, in four places, each described in this policy:
+      the worked shifts saved to your account (above); the start and end times of your
+      coming shifts, filed for the week ahead while the Shifts and earnings notifications are
+      on, so the shift card on your Lock Screen can start and keep up while the app is
+      closed, and deleted a day after each shift ends; the shift times sent to Anthropic when
+      you ask Nami about your pay; and, if you add one, your rota feed.
+    </p>
+    <p>
+      <strong>Tap to Log.</strong> Tap to Log works only if you build a Shortcuts automation
+      yourself, on the Wallet trigger, which hands Nami the amount and the merchant name each
+      time you pay with a card in Apple Wallet using Apple Pay. Nami does not read your card
+      or Apple Pay, and it holds no Wallet or Apple Pay permission. A purchase logged this way
+      is kept on your phone only, never uploaded, at most twenty at a time. It stays until
+      your bank's own copy of the purchase arrives, or for three days if none does, and then
+      Nami removes it.
+    </p>
+    <p>
+      <strong>The shared merchant book.</strong> When a purchase you logged with Tap to Log is
+      paired with your bank's copy of it, your phone sends our server the two merchant names
+      involved (the bank's description, with every word that holds a digit removed, and the
+      shop's name) and nothing else: no account, no amount, no card, no date and no time. We
+      do not record who sent a pair. For each pair our server keeps how many separate days
+      it has been sent on and the first and last of those days. So that one reader counts
+      once a day, the server also keeps, for that day only, a scrambled code made from your
+      account and a random key that exists for that day alone; the codes and the key are
+      deleted once the day is over, when the next day's first pair arrives. A pair is shared
+      with other readers' phones only after it has been sent on at least three separate days,
+      and any pair can be taken down by hand so it is never shared again. This lets the next
+      reader's purchase at the same shop be named straight away. It happens only for
+      purchases logged with Tap to Log, so if you never set up Tap to Log, or turn it off,
+      your phone makes no new pairs to send.
     </p>
   </section>
 
@@ -389,50 +479,76 @@
     <p>Nami offers three sign-in methods. You choose which one to use:</p>
     <ul>
       <li>
-        <strong>Email and password</strong> — handled by Supabase Auth. Your password is
+        <strong>Email and password:</strong> handled by Supabase Auth. Your password is
         never seen by us in plain text; Supabase stores a salted hash.
       </li>
       <li>
-        <strong>Sign in with Apple</strong> — Apple authenticates you and returns an identity
-        token plus your email (which may be a private relay address you control) and, on first
-        sign-in only, your name. Nami exchanges the identity token for a Supabase session.
-        Apple's relay address means you can revoke our access at any time from your Apple ID
-        settings without losing access to your account on our side.
+        <strong>Sign in with Apple:</strong> Apple authenticates you and returns an identity
+        token and your email address, which may be a private relay address you control.
+        Nami exchanges the identity token for a Supabase session, and your account keeps the
+        email address and Apple's identifier for you. Apple may offer Nami your name on your
+        first sign-in; Nami does not keep it.
       </li>
       <li>
-        <strong>Sign in with Google</strong> — Google authenticates you via the official
-        Google Sign-In iOS SDK and returns an identity token, your email address, and your
-        Google account ID. Nami exchanges the identity token for a Supabase session.
-        See the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+        <strong>Sign in with Google:</strong> Google authenticates you via the official
+        Google Sign-In iOS SDK and returns an identity token carrying your email address,
+        your Google account ID, your name and your profile picture. Nami exchanges the
+        identity token for a Supabase session, and Supabase stores those details with your
+        account. See the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
         for how Google handles your account.
       </li>
     </ul>
     <p>
-      Whichever method you choose, the only piece of identity data we retain on our backend
-      is your email address and an opaque Supabase user ID.
+      Whichever method you choose, once you have signed in our analytics and our subscription
+      provider know you by the opaque account identifier, never by your email address or
+      your name.
     </p>
   </section>
 
   <section>
     <h2>How We Use Your Data</h2>
     <ul>
-      <li>To provide the core features of the app (transaction summaries, insights, categorisation).</li>
+      <li>To provide the core features of the app (transaction summaries, insights, budgets, income and Net Wealth).</li>
       <li>To keep a connected bank's accounts, balances and transactions up to date in the app.</li>
-      <li>To securely store your transactions so they persist across sessions.</li>
-      <li>To generate AI-powered spending insights via our AI provider.</li>
+      <li>To securely store your data so it persists across sessions and devices.</li>
+      <li>To categorise transactions, read statements, answer your questions and write your morning brief, through our AI provider, once you have agreed.</li>
+      <li>To send the notifications you have switched on and to keep the Lock Screen cards current.</li>
+      <li>To understand, through product analytics, which parts of the app are used, so we can improve it.</li>
     </ul>
     <p>
-      We do not use your data for advertising, profiling, or any purpose beyond app functionality.
+      We do not use your data for advertising or profiling.
     </p>
+  </section>
+
+  <section>
+    <h2>Our Legal Basis</h2>
+    <ul>
+      <li>
+        <strong>To provide the app you signed up for:</strong> your account and sign in,
+        storing your data, a bank connection you ask for, budgets, income, Net Wealth, the
+        notifications and Lock Screen cards you switch on, and your subscription. We need this
+        data to run Nami for you.
+      </li>
+      <li>
+        <strong>With your consent:</strong> sending your data for AI processing. You can
+        withdraw it at any time, as described in <a href="#ai-processing">AI Processing</a>.
+      </li>
+      <li>
+        <strong>Our legitimate interest in keeping Nami working and improving it:</strong>
+        product analytics under the opaque account identifier, the shared merchant book and
+        merchant logos, and keeping the service secure. None of these identify you by name.
+      </li>
+    </ul>
   </section>
 
   <section id="open-banking">
     <h2>Connecting a Bank (Open Banking)</h2>
     <p>
-      Connecting a bank is optional — Nami works without it, using statements you upload.
-      If you do connect one, the connection is made through
-      <strong>TrueLayer</strong>, a UK open banking provider authorised and regulated by the
-      Financial Conduct Authority. Here is exactly what happens:
+      Connecting a bank is optional, and it is part of Nami Pro. Nami works without it,
+      using statements you upload and purchases you log with Tap to Log. If you do connect
+      one, the connection is made through <strong>TrueLayer</strong>, a UK open banking
+      provider authorised and regulated by the Financial Conduct Authority. Here is exactly
+      what happens:
     </p>
     <ul>
       <li>
@@ -444,12 +560,13 @@
       <li>
         <strong>What we receive:</strong> the names and types of your accounts, their
         balances, your cards in masked form (the card's name and its last four digits),
-        and your transactions — date, description, merchant name and amount.
+        your transactions (date, description, merchant name and amount), the name of your
+        bank and the date your consent expires.
       </li>
       <li>
         <strong>Read-only, and no ability to move money.</strong> The access we ask for is
         account information only. Nami cannot make a payment, move money between accounts,
-        or change anything at your bank — the connection can only read.
+        or change anything at your bank. The connection can only read.
       </li>
       <li>
         <strong>We deliberately do not store the account holder name.</strong> Your bank can
@@ -457,27 +574,42 @@
         so it never enters our database.
       </li>
       <li>
-        <strong>How long the connection lasts:</strong> around 90 days is the usual ceiling
-        for a UK open banking consent, but it is your bank that sets the actual expiry date
-        on the consent you give it. Nami records whatever date your bank returns and stops
-        syncing when it passes; the connection then shows as needing reconnection in the app.
-        We cannot extend or renew it ourselves — only re-authorising at your bank does that,
-        from <strong>Profile → Connected banks → Reconnect</strong>.
+        <strong>When you refresh while you are looking:</strong> our server passes your
+        device's IP address to TrueLayer with the request, as open banking rules expect, so
+        your bank can tell that you are present. Scheduled reads made while you are away
+        carry no IP address.
+      </li>
+      <li>
+        <strong>How long the connection lasts:</strong> your bank sets the expiry date on
+        the consent you give it. Nami records the date your bank returns, and once it passes
+        the connection shows as needing reconnection in the app. We cannot extend or renew it
+        ourselves. Only re-authorising at your bank does that, from
+        <strong>Profile, Connected banks, Reconnect</strong>.
+      </li>
+      <li>
+        <strong>If Pro ends:</strong> when a free trial ends without a subscription, or a
+        subscription lapses, your connection is paused. Nami stops reading from your bank,
+        everything it has already brought stays in your account and readable, and the
+        connection's tokens stay on our server so that it can resume. If you subscribe again
+        while your bank's consent stands, the connection resumes without a new consent; if
+        the consent has expired, you are asked to reconnect.
       </li>
       <li>
         <strong>Where the keys to the connection live:</strong> the access and refresh tokens
         issued for your connection are held on our server, in a table that no app user and no
-        client can read — only our backend service itself can. They are never sent to your
+        client can read; only our backend service itself can. They are never sent to your
         device and never shared with anyone else.
       </li>
       <li>
         <strong>How to disconnect:</strong>
-        <strong>Profile → Connected banks → Disconnect</strong>. That removes the whole
-        connection from Nami — its accounts and balances, and the stored access and refresh
+        <strong>Profile, Connected banks, Disconnect</strong>. That removes the whole
+        connection from Nami: its accounts and balances, and the stored access and refresh
         tokens, so nothing further can be fetched from your bank. Transactions already synced
-        stay in your account; deleting your account removes those along with everything else.
-        Disconnecting in Nami does not cancel the consent at your bank's end: your bank keeps
-        its own record of who you have shared with, and you can withdraw it there too.
+        stay in your account, and so does the daily record of your net wealth, which includes
+        that bank's balances up to the day you disconnected; deleting your account removes
+        those along with everything else. Disconnecting in Nami does not withdraw the consent
+        itself: Nami does not ask TrueLayer or your bank to cancel it, so it stands at both
+        until it expires or you withdraw it at your bank.
       </li>
     </ul>
     <p>
@@ -489,176 +621,219 @@
   <section id="ai-processing" class="ai-section">
     <h2>Third-Party AI Processing</h2>
     <p>
-      Nami sends transaction data to a third-party AI service to categorise it and to generate
-      the spending insights and category breakdowns you see in the app. This applies to both
-      routes your transactions can take into Nami — a connected bank and an uploaded
-      statement. Here is exactly what happens:
+      Nami uses a third-party AI service in four places: to categorise transactions from a
+      connected bank, to read statements you upload, to answer the questions you ask Ask
+      Nami, and to write your morning brief. Here is exactly what happens:
     </p>
     <ul>
       <li>
         <strong>What is sent from a connected bank:</strong> only the transactions our own
-        rules could not categorise on their own, and for each one only five fields — an
+        rules could not categorise on their own, and for each one only five fields: an
         opaque row reference, the direction ("debit" or "credit"), the amount in pence, the
-        description text, and the merchant name. No name, no email address, no user
-        identifier and no account number ever travels with it.
+        description text, and the merchant name. We add no name, no email address, no user
+        identifier and no account number to it. The description and merchant name, though,
+        go as your bank wrote them, so a transfer's description can carry a person's name,
+        your own name, or a reference that is an account number.
       </li>
       <li>
-        <strong>What is sent from a statement you upload:</strong> the content of that file
-        (PDF or CSV) — including transaction dates, merchant names, amounts, and any
-        surrounding statement text — so the transactions can be read out of it. Your account's
-        name and email address are never added to a request. A statement, though, is sent as
-        it is, so anything printed on it, such as your name or an account number, goes with it.
+        <strong>What is sent from a statement you upload:</strong> the file itself (PDF or
+        CSV), so the transactions can be read out of it. Your account's name and email
+        address are never added to a request. A statement, though, is sent as it is, so
+        anything printed on it, such as your name or an account number, goes with it. A free
+        account can have one statement read a month, and Pro up to fifty.
       </li>
       <li>
         <strong>What is sent when you ask Nami a question</strong> through the in-app
         assistant ("Ask Nami"): your question, the last few messages in that chat, and the
-        figures, merchant names and date range of the window Home is showing, together with
+        figures, merchant names and date range of the window you are reading, together with
         your currency, your monthly budget, your category limits and your category names.
-        When you ask about what you own or owe: your net wealth, your account names and what
-        each one holds, and any repayment plan on them with the date it clears. When you ask
-        about your pay: your employer's name, your pay dates, what you have earned and what
-        your payslips came to, and the start and end times of the shifts read from your
-        calendar (the titles of your calendar events are never sent), along with the name and
-        kind of each income source you have added, whether that is an employer, a source Nami
-        found in your bank transactions or one you entered yourself, how each one is doing,
-        what it is expected to pay you next and what each has paid you this month. A source
-        Nami found in your bank transactions is named after the counterparty on the
-        transaction, which is usually a business.
+        With every question, a list of what is connected: the name of each bank and how many
+        accounts it holds, how many accounts you have entered yourself and how many
+        statements you have imported. When you ask about what you own or owe: your net wealth,
+        your account names (for a card, the name your bank gives it and its last four
+        digits) and what each one holds, and any repayment plan on them with the
+        date it clears. When you ask about your pay: your employer's name, your pay dates,
+        what you have earned and what your payslips came to, and the start and end times of
+        the shifts read from your calendar (the titles of your calendar events are never
+        sent), along with the name and kind of each income source you have added, how each
+        one is doing, what it is expected to pay you next and what each has paid you this
+        month. A source Nami found in your bank transactions is named after the counterparty
+        on the transaction, which is usually a business. Also sent: anything you have asked
+        Nami to remember, and the text of an earlier chat only when you ask Nami to look one
+        up. A free account can ask three questions a day, answered by a smaller Claude model;
+        Pro can ask fifty, answered by a larger one.
       </li>
       <li>
-        <strong>Connected brokers:</strong> if you connect a broker account, such as Trading 212,
-        you give us an API key and secret that you create in that broker's own app. We send
-        them to our server over an encrypted connection, store them encrypted, and use them
-        only to read four things: your account summary, how many holdings you have, your
-        dividend history and your transaction history. We never hold a key that can place,
-        change or cancel a trade, and we refuse a key that could. We read your account about
-        four times a day and keep the balance, the number of holdings, the dividends and the
-        cash interest we read, so that your net wealth and your income are up to date when you
-        open the app. We do not keep a list of your individual holdings. Your key and secret
-        are never sent to our AI provider, and neither is the name of any share you own. You
-        can disconnect at any time in the app, which deletes the key and secret from our
-        servers, and you can delete the key in the Trading 212 app, which stops our access
-        instantly. We are not partnered with Trading 212, and the values we show come from
-        their own last conversion rather than from a live market price.
+        <strong>What is sent for your morning brief:</strong> the brief is put together on
+        our server each morning, at the time you choose, from the figures already in your
+        account. If you have agreed to AI processing, one request goes to Claude with the
+        figures the brief shows (yesterday's spending, how many purchases it covered and
+        their categories; any pay landing today, with its amount and who it is from; your net
+        wealth today or its forecast for the month's end) and a few short facts Nami may turn
+        into a tip, such as what your regular monthly charges come to, a category over its
+        limit, how your spending is pacing against your budget, or a payslip that came in
+        below what was expected. Claude writes the words around those figures. A free
+        account's brief is written by a smaller Claude model and a Pro account's by a larger
+        one. If you have not agreed, the brief is still written, with the figures and no AI.
       </li>
       <li>
         <strong>How it is sent:</strong> through our own secure server. Your device never
         communicates with the AI provider directly, and the API key stays on our server.
       </li>
       <li>
-        <strong>Purpose:</strong> To extract transaction descriptions, amounts, dates and
-        categories, and to generate the personalised spending insights, category summaries
-        and assistant answers Nami shows you.
+        <strong>Purpose:</strong> to extract transaction descriptions, amounts, dates and
+        categories, and to write the answers, tips and readings Nami shows you.
       </li>
       <li>
         <strong>Your consent:</strong> Nami asks for your consent before any of your data is
-        sent for AI processing, and you must agree before anything is sent. Your agreement is
-        recorded against your account on our server and re-checked there on every single
-        request — for transactions from a connected bank as well as for statements — so no
-        processing can happen without it. The disclosure you agree to describes the statement
-        upload, and you can read it again at any time from
-        <strong>Profile → Privacy &amp; Data → AI processing</strong>.
+        sent for AI processing, and you must agree before anything is sent. The first time
+        you ask Nami a question, a card in the chat names Anthropic and Claude, lists what is
+        and is not sent, and sends nothing until you tap Agree and ask. Your agreement is
+        recorded against your account on our server and re-checked there before every single
+        request, for bank transactions, statements, questions and the morning brief alike, so
+        no processing can happen without it. You can read the full disclosure again, and turn
+        AI processing off or on, at any time from
+        <strong>Profile, Privacy &amp; data, AI processing</strong>. With it off, statements
+        cannot be read, Ask Nami cannot answer, bank transactions are categorised by Nami's
+        own rules, and your brief is written without AI.
       </li>
       <li>
-        <strong>Your right to delete:</strong> You can delete every transaction Nami holds,
+        <strong>Turning it off needs a connection:</strong> the switch takes effect on your
+        phone at once, so statements and Ask Nami stop straight away. Bank categorisation and
+        the morning brief run on our server, and they stop only once your choice reaches it.
+        Nami does not yet try again if that fails, so turn AI processing off while you are
+        online. If you turned it off without a connection, or are unsure it went through,
+        write to us and we will turn it off on our side.
+      </li>
+      <li>
+        <strong>Your right to delete:</strong> you can delete every transaction Nami holds,
         along with your account, at any time from
-        <strong>Profile → Privacy &amp; Data → Delete Account</strong>. Deletion is permanent
-        and removes your data from our servers.
+        <strong>Profile, Privacy &amp; data, Delete account</strong>. Deletion is permanent
+        once it reaches our server, and is described in full under
+        <a href="#retention">Data Retention &amp; Deletion</a>.
       </li>
     </ul>
 
-    <!-- ══════════════════════════════════════════════════════════════════
-         AI PROVIDER BLOCK — THE ONLY PLACE THE AI PROVIDER IS NAMED.
-
-         WHEN THE PROVIDER CHANGES (switched to Anthropic on 8 September 2026), EDIT ONLY
-         THE SINGLE <p> BETWEEN THIS COMMENT AND THE "END AI PROVIDER
-         BLOCK" COMMENT BELOW. Everything to change is inside it:
-           1. the company name        ("Anthropic, PBC")
-           2. the product name        ("Claude", in "the Claude API")
-           3. the retention sentence  ("Anthropic does not use ... legal duties")
-           4. the closing sentence naming the company again
-           5. the privacy-policy link (href + link text)
-
-         NOTHING ELSE ON THIS PAGE NAMES THE AI PROVIDER. The rest of the
-         page says "our AI provider" / "the AI provider" on purpose, so the
-         swap is this block and nothing else.
-
-         TWO THINGS TO RE-VERIFY, THOUGH THEY CARRY NO NAME:
-           - the "Retention" bullet in the "At a glance" callout near the
-             top of the page, which repeats the no-retention / no-training
-             claim without naming anyone;
-           - the sentence in "Data Storage & Security" about the AI
-             provider's API key being stored server-side.
-
-         Also update, outside this file, the in-app AI consent screen
-         (AIConsentView) so the two disclosures keep saying the same thing.
-         ══════════════════════════════════════════════════════════════════ -->
     <p>
       The AI provider Nami currently uses is <strong>Anthropic, PBC</strong>, via the Claude
-      API. Anthropic does not use data sent through its API to train its models, and keeps it
-      only for a short period, to check for misuse and to meet its legal duties; we retain
-      the resulting transaction records in your account so they appear when you reopen the
-      app. Anthropic's data processing provides equivalent privacy protections as required by
-      applicable laws. For more information, see the
-      <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a>.
+      API. Anthropic does not use your data to train AI models. It is deleted within 30 days
+      in normal use, unless Anthropic has to keep it longer to enforce its usage rules or by
+      law. We keep the resulting transaction records, memories and briefs in your account so
+      they appear when you reopen the app. For more information, see the
+      <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Privacy Policy</a>.
     </p>
-    <!-- ═════════════════════ END AI PROVIDER BLOCK ═════════════════════ -->
   </section>
 
   <section>
     <h2>Other Third-Party Services</h2>
     <ul>
       <li>
-        <strong>TrueLayer</strong> — the FCA-authorised UK open banking provider that carries
+        <strong>TrueLayer:</strong> the FCA-authorised UK open banking provider that carries
         the connection between your bank and Nami, if you choose to connect one. It is
         read-only account information access, described in full in
         <a href="#open-banking">Connecting a Bank (Open Banking)</a> above.
         <a href="https://truelayer.com/privacy/" target="_blank">TrueLayer Privacy Notice</a>
       </li>
       <li>
-        <strong>Supabase</strong> — secure cloud database and authentication.
-        Your data is stored in Supabase and protected by Row Level Security, meaning
-        only you can access your own data.
+        <strong>Supabase:</strong> secure cloud database, authentication and the server
+        functions that sync your bank, write your brief and send your notifications. Your
+        account and everything described in this policy as stored in your account is held in
+        Supabase and protected by Row Level Security, meaning only you can access your own
+        data.
         <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a>
       </li>
       <li>
-        <strong>Apple — Sign in with Apple</strong> — used only when you choose this sign-in
-        method. Apple returns an identity token (and on first sign-in, your name and email)
-        which we exchange for a Supabase session.
+        <strong>Sign in with Apple:</strong> used only when you choose this sign-in method.
+        Apple returns an identity token and your email address, which we exchange for a
+        Supabase session.
         <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>
       </li>
       <li>
-        <strong>Google Sign-In</strong> — used only when you choose to Sign in with Google.
-        Google's iOS SDK handles the OAuth flow and returns an identity token, your email,
-        and your Google account ID, which we exchange for a Supabase session. This is a
-        separate, sign-in-only service and is unrelated to the AI processing described above.
+        <strong>Apple Push Notification service:</strong> every notification our server
+        sends, and every update to a Lock Screen card, travels through Apple's push service to
+        your device. What each one carries:
+        <ul>
+          <li>
+            Today's spend card: what you have spent today, what is left of your monthly
+            budget and the budget itself, your currency symbol, the day and time zone it is
+            counted in, the minute it was counted to, and whether the card is drawn light or
+            dark.
+          </li>
+          <li>
+            The shift card: the start and end times of the shift, the minute the card is
+            counted to, and light or dark. No pay figure, rate or employer name travels for
+            this card; your phone works out the pay from what it already holds.
+          </li>
+          <li>
+            Notifications written on our server carry their own words. For example: the
+            morning brief's one line, which can be your spending so far this month, what you
+            have earned so far this month, your month end forecast or, on a pay day, your
+            pay and who it is from, either landed or expected along with what it depends on;
+            Your pay landed, with the amount and how much more or less it is than expected;
+            and a budget alert, with what you have spent against your budget.
+          </li>
+          <li>
+            A rota feed change: our server sends "Rota changed" with the start and end times
+            of the shifts that changed, and your phone works out what they pay and rewrites the
+            words when it arrives. No pay figure travels for it.
+          </li>
+          <li>
+            Wake-ups that ask the app to refresh carry nothing about you.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Google Sign-In:</strong> used only when you choose to Sign in with Google.
+        Google's iOS SDK handles the sign-in and returns an identity token, your email, your
+        Google account ID, your name and your profile picture, which we exchange for a
+        Supabase session. This is a separate, sign-in-only service and is unrelated to the AI
+        processing described above.
         <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
       </li>
       <li>
-        <strong>RevenueCat</strong> — used to manage in-app subscription purchases. RevenueCat
-        receives your opaque Supabase account ID — pseudonymous rather than anonymous: it
-        carries no name and no email, but it does identify your account — along with your
-        purchase events from Apple's StoreKit. It does not see your name, email, or
-        transaction data.
+        <strong>RevenueCat:</strong> used to manage in-app subscription purchases. RevenueCat
+        receives your opaque Supabase account ID, which is pseudonymous rather than anonymous
+        (it carries no name and no email, but it does identify your account), along with your
+        purchase events from Apple's StoreKit. Before you sign in, it uses a random
+        identifier of its own, which is joined to your account identifier when you sign in.
+        Like any web service, it sees the IP address a request comes from, and its software
+        sends your app and iOS versions. It does not see your name, email, or transaction
+        data.
         <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
       </li>
       <li>
-        <strong>Merchant logos</strong> — the small marks beside shop names. Nami ships a
+        <strong>Merchant logos:</strong> the small marks beside shop names. Nami ships a
         built-in list of UK merchants and their websites, and matches your transactions
-        against it on your device. When a shop is not on that list, the app sends the shop
-        name, and only the shop name, to Nami's own server, which works out the shop's
-        website and fetches its public icon from the site itself or from a public icon
-        service (Google's or DuckDuckGo's), then keeps the icon so it is fetched once for
-        everyone. Your device never contacts those services, and the request that reaches
-        them carries no account, no amount and no user identifier. A shop's website, once
-        found, is stored without any link to you.
+        against it on your device. When a shop is on that list but its icon is not yet on
+        your phone, the app asks Nami's own server for the icon by the shop's website
+        address. When a shop is not on that list, the app sends the shop name, and only the
+        shop name, to Nami's own server, which works out the shop's website by trying likely
+        addresses made from the name. Either way our server fetches the public icon from the
+        site itself or from a public icon service (Google's or DuckDuckGo's), then keeps the
+        icon so it is fetched once for everyone. Your device never contacts those services or
+        those websites, and the requests that reach them carry no account, no amount and no
+        user identifier. A shop's website, once found, is stored without any link to you.
       </li>
       <li>
-        <strong>PostHog</strong> — used for product analytics (app opens, feature usage,
-        sign-in method). Events are tagged with your opaque Supabase account ID only. That ID
-        is pseudonymous rather than anonymous — it carries no name and no email, but it does
-        identify your account. PostHog never receives your email, your name, or any financial
-        data.
+        <strong>PostHog:</strong> used for product analytics, through PostHog's EU servers.
+        It receives when the app is installed, updated, opened and put away, which screens
+        and features you use, and the sign-in method you chose. Once you have signed in,
+        events are tagged with your opaque Supabase account ID only, which is pseudonymous
+        rather than anonymous: it carries no name and no email, but it does identify your
+        account. Before you sign in, for example while you go through the first screens,
+        PostHog's software tags events with a random identifier of its own, and joins them to
+        your account identifier when you sign in. No event carries an amount, a merchant, an
+        employer, a bank, an account or card name, a note, a search or the text of a
+        question; figures are sent only as broad bands, counts or yes and no. An event about a
+        category limit or a recategorised transaction carries the category's name when it is
+        one of Nami's built-in categories; one you created is sent only as "custom". PostHog's
+        software adds your device model, iOS version, app version, language and region, time
+        zone, screen size and network type, and, like any web service, sees the IP address a
+        request comes from. Nami's PostHog project is set to discard that address, so it is
+        not stored with your events, though PostHog may first use it to estimate a rough
+        location, such as your country and city. Nami does not send crash reports to PostHog,
+        it does not record your screen, and it does not collect your device's advertising
+        identifier.
         <a href="https://posthog.com/privacy" target="_blank">PostHog Privacy Policy</a>
       </li>
     </ul>
@@ -667,22 +842,69 @@
   <section>
     <h2>Data Storage &amp; Security</h2>
     <p>
-      Your data is stored in Supabase (EU region) with Row Level Security enforced —
-      meaning no other user can access your data. All data is transmitted over HTTPS.
-      The AI provider's API key is stored server-side and never included in the app binary.
-      The tokens behind a bank connection are held in a separate table that no client can
-      read at all — only our backend service itself can.
+      Your data is stored in Supabase (EU region) with Row Level Security enforced, meaning
+      no other user can access your data. All data is transmitted over HTTPS. The AI
+      provider's API key is stored server-side and never included in the app binary. The
+      tokens behind a bank connection are held in a separate table that no client can read
+      at all; only our backend service itself can. Your Ask Nami chats are kept on your phone,
+      protected by iOS data protection and left out of iCloud and computer backups, and
+      purchases logged with Tap to Log are kept on your phone only.
+    </p>
+    <p>
+      <strong>Where your data is processed.</strong> Your account and everything stored in
+      it is held in Supabase's EU region, in Stockholm. Our server functions run on
+      Supabase's network, which can handle a request at a location near you on its way to
+      that database. Some of the services named in this policy are based outside the UK and
+      the EU: Anthropic and RevenueCat are in the United States and process what they
+      receive there, and Apple and Google handle sign in and notifications under their own
+      policies. PostHog receives analytics at its EU servers, and TrueLayer is a UK
+      provider. Where your data leaves the UK or the EU, it does so under the data
+      protection terms those providers offer their business customers.
     </p>
   </section>
 
-  <section>
+  <section id="retention">
     <h2>Data Retention &amp; Deletion</h2>
     <p>
-      Your data is retained for as long as you have an account. You can delete your
-      account at any time from the <strong>Profile</strong> tab inside the app.
-      Deleting your account permanently removes all your data from our servers —
-      including your transactions, any connected bank and the access tokens behind it —
-      and cannot be undone.
+      Your data is retained for as long as you have an account. You can delete your account
+      at any time from <strong>Profile, Privacy &amp; data, Delete account</strong>.
+      Deleting your account permanently removes the data Nami holds against it from our
+      database, including your transactions and statements, your budgets and settings, your
+      income, shifts and rota feed, your Net Wealth accounts and history, your memories and
+      briefs, your notification tokens, and any connected bank with the access tokens behind
+      it, and cannot be undone. Our database is backed up daily and each backup is kept for
+      about a week, so a deleted account can remain in those backups until they roll over.
+      If you would rather keep your account, <strong>Delete all statements</strong> in the
+      same section removes every uploaded statement and its transactions.
+    </p>
+    <p>
+      Both need a connection. Nami signs you out after Delete account whether or not our
+      server received the request, and clears your statements from the screen before the
+      deletion reaches our server, and at the moment it does not tell you if either failed.
+      So delete while you are online. If you can sign back in with the same details after
+      deleting your account, or a statement comes back the next time you open Nami, the
+      deletion did not go through: do it again, or write to us and we will do it for you.
+    </p>
+    <p>
+      A few things are not held by us against your account, and deleting it does not reach
+      them. RevenueCat keeps its own record of your purchases under your account identifier,
+      and Apple keeps its record of your subscription; deleting your account does not cancel
+      a subscription, so cancel it first in the Settings app. Analytics events already sent
+      to PostHog stay under the opaque account identifier, which no longer matches any
+      account. Merchant pairs in the shared merchant book were never linked to you and stay.
+      Data sent to Anthropic is kept as described in the AI Processing section. If you
+      signed in with Apple, deleting your account does not remove Nami from the apps using
+      Sign in with Apple in your Apple Account settings; you can stop using it there. Nami
+      does not ask TrueLayer or your bank to cancel a bank consent, so it stands at both
+      until it expires or you withdraw it at your bank, though Nami can no longer use it
+      once the tokens are deleted.
+    </p>
+    <p>
+      Some things are kept for a set time. The start and end times of your coming shifts are
+      deleted a day after each shift ends. A purchase logged with Tap to Log stays on your
+      phone until your bank's copy of it arrives, or for three days if none does. The
+      scrambled daily codes behind the shared merchant book are deleted once their day is
+      over.
     </p>
   </section>
 
@@ -690,18 +912,34 @@
     <h2>Your Rights</h2>
     <p>You have the right to:</p>
     <ul>
-      <li>Access the data we hold about you.</li>
-      <li>Delete your account and all associated data at any time, directly in the app.</li>
+      <li>Access the data we hold about you, and ask us to correct it.</li>
       <li>
-        Disconnect a bank at any time from <strong>Profile → Connected banks</strong>, and
+        Delete your account and the data Nami holds against it at any time, directly in the
+        app.
+      </li>
+      <li>
+        Disconnect a bank at any time from <strong>Profile, Connected banks</strong>, and
         withdraw the consent itself at your bank.
       </li>
       <li>
-        Stop AI processing by disconnecting your bank and not uploading statements, or by
-        contacting us.
+        Stop AI processing at any time from <strong>Profile, Privacy &amp; data, AI
+        processing</strong>, or by contacting us.
+      </li>
+      <li>
+        See and delete what Nami remembers from <strong>Profile, Privacy &amp; data, Nami
+        remembers</strong>, one memory at a time or all at once with Forget everything.
+      </li>
+      <li>
+        Object to, or ask us to restrict, how we use your data, by writing to us.
       </li>
       <li>Contact us with any privacy-related questions.</li>
     </ul>
+    <p>
+      If you are unhappy with how we have handled your data, you can complain to the
+      Information Commissioner's Office, the UK's data protection regulator, at
+      <a href="https://ico.org.uk/make-a-complaint/" target="_blank">ico.org.uk</a>. We would
+      be glad of the chance to put it right first.
+    </p>
   </section>
 
   <section>

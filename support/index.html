@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – Nami: Spending Tracker</title>
-  <meta name="description" content="Support for Nami: Spending Tracker by Melio Labs Ltd — bank connections, statements, shifts, budgets, Pro, notifications and your data." />
+  <title>Support, Nami: Spending Tracker</title>
+  <meta name="description" content="Support for Nami: Spending Tracker by Melio Labs Ltd: bank connections, statements, Tap to Log, shifts, budgets, Ask Nami, Pro, notifications and your data." />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#FCFCFB" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)" />
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
   <style>
     /* ------------------------------------------------------------------
-       RevivalTheme — paper and ink.
+       RevivalTheme: paper and ink.
        Light tokens on :root, dark tokens swapped in prefers-color-scheme
        only (GitHub Pages does not stamp a theme attribute).
        One accent on the page: the reply-time mark in the masthead.
@@ -278,10 +278,6 @@
 <header class="masthead">
   <p class="masthead-eyebrow">Nami: Spending Tracker</p>
   <h1>Support</h1>
-  <!-- ONE SPAN INSIDE THE STAMP, NOT BARE TEXT. `.stamp` is a flex row —
-       the accent rule is its ::before — so every text node and every <a>
-       left loose in here becomes its own flex column and the sentence
-       breaks into three stacked fragments. The span keeps it one item. -->
   <p class="stamp">
     <span>Email us at <a href="mailto:developer@meliolabs.io">developer@meliolabs.io</a>
     and we aim to reply within two working days.</span>
@@ -293,36 +289,45 @@
   <section>
     <h2>Connecting a bank</h2>
     <p>
-      Connecting a bank is optional — Nami also works from statements you upload. The
-      connection is made through <strong>TrueLayer</strong>, the open banking provider
-      authorised and regulated by the Financial Conduct Authority; you choose your bank from
-      TrueLayer's list and log in at your bank's own app or website, so Nami never sees your
-      banking password. The access Nami asks for is read-only: it can read your accounts,
-      balances, cards and transactions, and it cannot make a payment or move money. Bank
-      linking is part of Pro, and you start a connection from the <strong>+</strong> on
-      Net Wealth.
+      Connecting a bank is optional, and it is part of Nami Pro. Nami also works from
+      statements you upload and from purchases you log with Tap to Log. The connection is
+      made through <strong>TrueLayer</strong>, the open banking provider authorised and
+      regulated by the Financial Conduct Authority; you choose your bank and log in at your
+      bank's own app or website, so Nami never sees your banking password. The access Nami
+      asks for is read-only: it can read your accounts, balances, cards and transactions,
+      and it cannot make a payment or move money. You start a connection from the
+      <strong>+</strong> on Net Wealth.
     </p>
     <ul>
       <li>
-        <strong>If a connection says "Needs reconnecting"</strong> — go to
-        <strong>Profile → Connected banks → Reconnect</strong>. Reconnect is not Refresh:
+        <strong>If a connection says "Needs reconnecting":</strong> go to
+        <strong>Profile, Connected banks, Reconnect</strong>. Reconnect is not Refresh:
         Refresh now asks your bank for today's balances under the permission you already
         gave, while Reconnect walks the whole consent again. Reconnect is also what to use
         when a card or your transactions never appear, because the permissions are fixed at
         the moment you authorise them and only a new consent can widen them.
       </li>
       <li>
-        <strong>To hide an account, and to get it back</strong> — swipe the account's card on
-        Net Wealth and choose <strong>Hide this account</strong>. It stays off Net Wealth until
-        you show it again, and the bank stays connected throughout. Bring it back from
-        <strong>Profile → Connected banks → Hidden accounts → Show</strong>.
+        <strong>If a connection says "Paused":</strong> your free trial ended without a
+        subscription, or your subscription lapsed. Nami has stopped reading from that bank,
+        and everything it already brought is still there to read. Tap
+        <strong>Reconnect with Pro</strong> in Connected banks to see the plans. Once you
+        subscribe, the bank picks up again without logging in at your bank, as long as the
+        consent you gave your bank has not expired; if it has, Nami asks you to reconnect.
       </li>
       <li>
-        <strong>To disconnect</strong> — <strong>Profile → Connected banks → Disconnect</strong>.
+        <strong>To hide an account, and to get it back:</strong> swipe the account's card on
+        Net Wealth and choose <strong>Hide this account</strong>. It stays off Net Wealth until
+        you show it again, and the bank stays connected throughout. Bring it back from
+        <strong>Profile, Connected banks, Hidden accounts, Show</strong>.
+      </li>
+      <li>
+        <strong>To disconnect:</strong> <strong>Profile, Connected banks, Disconnect</strong>.
         That removes the whole connection from Nami: its accounts, its balances and the tokens
         behind it, so nothing further can be fetched from your bank. Transactions already
-        synced stay in your account. Your bank keeps its own list of who you have shared with,
-        so withdraw the consent there too if you want it gone at both ends.
+        synced stay in your account, and so does your Net Wealth history up to that day. Nami
+        does not cancel the consent you gave, so it stands at TrueLayer and your bank until it
+        expires; withdraw it at your bank if you want it gone at both ends.
       </li>
     </ul>
   </section>
@@ -331,33 +336,73 @@
     <h2>Statements</h2>
     <p>
       You can upload a PDF or CSV bank statement instead of connecting a bank, or as well as.
-      Statement uploads are on by default and switch themselves off once a bank is connected —
-      the switch is <strong>Profile → Statements → Statement uploads</strong>, and your own
-      answer sticks whatever you do with your bank connections afterwards. If you turn uploads
-      back on while a bank is connected, Nami warns you first: a statement for an account the
-      bank is already feeding counts that spending twice.
+      Statement uploads are off until you turn them on, at
+      <strong>Profile, Statements, Statement uploads</strong>. If you had uploaded statements
+      before Nami 2.0 and have no bank connected, they stay on for you. If you turn uploads
+      on while a bank is connected, Nami warns you first: a statement for an account the bank
+      is already feeding counts that spending twice. A free account can have one statement
+      read a month, and Pro up to fifty.
     </p>
     <p>
-      Nami shows you the file picker first, then the AI processing disclosure, and nothing is
-      sent until you agree. What is sent is the content of the file — transaction dates,
-      merchant names, amounts, and any text in the statement — so whatever is printed on the
-      statement, such as your name or an account number, goes with it.
+      Nothing is sent until you have agreed to AI processing. The statement is read by
+      Claude, made by Anthropic, through our own server, and the file goes as it is, so
+      whatever is printed on it, such as your name or an account number, goes with it.
+    </p>
+  </section>
+
+  <section>
+    <h2>Tap to Log</h2>
+    <p>
+      Tap to Log puts a card purchase on today's figure the moment you pay, without waiting
+      for your bank. It is free, and it is off until you set it up. Nami cannot see a
+      purchase on its own: you build a Shortcuts automation once, on the trigger called
+      Wallet (Any Card on some versions of iOS), and each time you pay with a card in Apple
+      Wallet using Apple Pay, the automation hands Nami the amount and the shop. Nami does
+      not read your card or Apple Pay, and it holds no Wallet or Apple Pay permission. That
+      is also why Tap to Log needs a card in Wallet on your phone: without one, the
+      automation has nothing to run on.
+    </p>
+    <p>
+      The guide is at <strong>Profile, Shortcuts, Tap to Log</strong>: six steps, and the
+      switch that has to be on for a purchase to be logged. A purchase logged this way stays
+      on your phone. It counts towards your spending and your budget, marked not confirmed
+      yet, until your bank's own copy arrives; if no copy arrives within three days, Nami
+      takes it out and tells you. <strong>Recent runs</strong>, on the same screen, lists
+      every run of the automation and what happened to it.
     </p>
   </section>
 
   <section>
     <h2>Income and shifts</h2>
     <p>
-      Nami reads your shifts from one calendar on your device. Nothing leaves your phone: the
-      rota itself is never uploaded. Set it up from Income → <strong>Set up your employer</strong>,
-      which asks for the calendar, the words your shift titles start with, your rate and unpaid
-      break rule, and your pay cycle.
+      Nami reads your shifts from one calendar on your phone. Set it up from Income,
+      <strong>Set up your employer</strong>, which asks for the calendar, the words your shift
+      titles start with, your rate and unpaid break rule, and your pay cycle. One employer is
+      free; Pro tracks up to four.
+    </p>
+    <p>
+      The calendar on your phone is read on your phone, and the titles of its events never
+      leave it. What is saved to your account is your employer's setup and, for each shift
+      you have worked, its times, hours and pay. While the <strong>Shifts and earnings</strong>
+      switch in Profile, Notifications is on, as it is unless you turn it off, Nami also
+      files the start and end times of your coming shifts so the shift card can start on
+      time with the app closed, and they are deleted a day after each shift ends. Shift times go to Anthropic only when you ask Nami
+      about your pay. The <a href="../">privacy policy</a> sets all of this out in full.
+    </p>
+    <p>
+      If your first employer's calendar is one your phone subscribes to from a published
+      link, Income offers a <strong>Rota feed</strong> row for that employer: paste the
+      feed's link and Nami can tell you the moment your rota changes, even when the app has
+      been closed for days. Our server then reads the feed itself about every five minutes,
+      so everything in it, titles included, passes through our server; it picks out your
+      shifts by the words their titles start with and keeps only the link and their start
+      and end times, never their titles.
     </p>
     <p>
       If a figure differs from your rota app, it is almost always one of two things. Nami reads
-      the times on the rostered calendar event — start to end, less your unpaid break — not the
+      the times on the rostered calendar event (start to end, less your unpaid break), not the
       hours written into the event's notes and not the time you actually clocked. And if the
-      hours look right but the total does not, check the pay-cycle rule: work in the back half
+      hours look right but the total does not, check the pay cycle rule: work in the back half
       of a month is often paid at the end of the following one, and the gap is usually the
       cutoff rather than the hours.
     </p>
@@ -366,48 +411,91 @@
   <section>
     <h2>Budgets and categories</h2>
     <p>
-      The monthly budget is free for everyone — set it from
-      <strong>Profile → Budgeting → Monthly budget</strong>. One category spending limit is free
+      The monthly budget is free for everyone. Set it from
+      <strong>Profile, Budgeting, Monthly budget</strong>. One category spending limit is free
       as well; Pro sets a limit on every category you spend in. A limit you have already set
       stays editable and removable on any plan.
     </p>
     <p>
-      Your categories live in <strong>Profile → Budgeting → Categories</strong>: free includes
-      one of your own, Pro is unlimited. Built-in categories cannot be renamed. Category Rules,
-      in the same section, is where a merchant you have recategorised is remembered, so the next
+      Your categories live in <strong>Profile, Budgeting, Categories</strong>: free includes
+      one of your own, and Pro includes more. <strong>Category rules</strong>, in the same
+      section, is where a merchant you have recategorised is remembered, so the next
       transaction from them lands in the right place on its own.
+    </p>
+  </section>
+
+  <section>
+    <h2>Ask Nami</h2>
+    <p>
+      Ask Nami answers questions about your own money from your own figures. A free account
+      can ask three questions a day; Pro can ask fifty, answered by Nami's best model. The
+      composer shows how many questions you have left today, and at the limit it says so.
+    </p>
+    <p>
+      The first time you ask, a card in the chat names Claude and Anthropic and lists what is
+      and is not sent. Nothing is sent until you tap <strong>Agree and ask</strong>. Your chats
+      stay on your phone. Anything you ask Nami to remember is kept with your account; see and
+      delete it at <strong>Profile, Privacy &amp; data, Nami remembers</strong>, where
+      <strong>Forget everything</strong> clears the lot.
     </p>
   </section>
 
   <section>
     <h2>Nami Pro</h2>
     <p>
-      Your income from one employer, and your Net Wealth, are free for everyone. Pro adds the
-      spending side and up to four employers: unlimited statement analysis where free reads one
-      a month, a limit on every category, every month you have had rather than only the one you
-      are in, fifty Ask Nami questions a day rather than five, bank connections, the Sankey
-      money flow, Nami's Picks, unlimited categories of your own, merchant renaming that sticks,
-      and the savings projector.
+      Your income from one employer, Net Wealth with the accounts you add yourself, the
+      monthly budget, one category limit, one category of your own, the morning brief, the
+      Lock Screen cards, Tap to Log, three Ask Nami questions a day and one statement a month
+      are free for everyone. Pro adds open banking, your pay cycle learned from your bank, Ask
+      Nami at fifty questions a day on Nami's best model, the morning brief written by that
+      model, a limit on every category, more categories of your own, up to four employers,
+      live bank balances in Net Wealth, merchant renaming that Nami remembers, the savings
+      projector, and up to fifty statements a month.
     </p>
     <p>
-      When your Apple ID is eligible for one, Pro opens with a free trial of 14 days; the paywall
-      states the length and the price that follows before you commit, and a subscription renews
-      automatically unless it is cancelled at least 24 hours before the period ends. Manage or
-      cancel it in <strong>Settings → Apple ID → Subscriptions</strong>. If you have paid before
-      and the app has not caught up — a reinstall, or a new device — use
-      <strong>Restore Purchases</strong> at the bottom of the Pro screen.
+      New subscribers can start with a free trial. The paywall states its length and the
+      price that follows before you commit, and a subscription renews automatically unless it
+      is cancelled at least 24 hours before the period ends. Manage or cancel it in the
+      Settings app: tap your name, then <strong>Subscriptions</strong>. On Pro,
+      <strong>Profile, Subscription, Manage subscription</strong> opens the same place. If you
+      have paid before and the app has not caught up (a reinstall, or a new device), use
+      <strong>Restore purchases</strong> in <strong>Profile, Subscription</strong>, or
+      <strong>Restore purchase</strong> in the menu at the top right of the plans page, the
+      last page of the Pro screen.
     </p>
   </section>
 
   <section>
     <h2>Notifications</h2>
     <p>
-      Everything Nami can send is in <strong>Profile → Notifications</strong>: a morning brief,
-      an evening sum-up of what you spent, budget alerts, a payday-eve nudge, your pay the
-      moment a shift ends, and repayment reminders. Each has its own switch, so you can keep
-      one and turn the rest off. If notifications for Nami are switched off in iOS Settings,
-      nothing on that screen can be delivered — it says so at the top and links you there.
+      Everything Nami can send is in <strong>Profile, Notifications</strong>: a morning brief,
+      an evening sum-up of what you spent, budget alerts, a payday eve nudge, a payslip
+      reminder on payday, your pay landing, your pay the moment a shift ends, repayment
+      reminders, and Today's spend on your Lock Screen. Each has its own switch, so you can
+      keep one and turn the rest off. If notifications for Nami are switched off in iOS
+      Settings, nothing on that screen can be delivered; it says so at the top and links you
+      there.
     </p>
+    <ul>
+      <li>
+        <strong>The morning brief</strong> is free for everyone. It arrives at the time you
+        choose (08:00 unless you change it), and Nami writes it within about fifteen minutes of
+        that time. It is the one Time Sensitive notification Nami sends; if Time Sensitive is
+        off for Nami in iOS Settings, the brief waits for your next notification summary.
+      </li>
+      <li>
+        <strong>Today's spend on your Lock Screen</strong> shows what you have spent today,
+        with what is left of your monthly budget, from your morning brief until 2am. It keeps
+        up while the app is closed. It is on unless you turn it off, with its own switch in
+        Profile, Notifications.
+      </li>
+      <li>
+        <strong>The shift card</strong> comes from your rota. When a shift begins, a card on
+        your Lock Screen counts up what it is paying you, and its figure steps on every five
+        minutes, even with the app closed. The pay is worked out on your phone. It follows the
+        <strong>Shifts and earnings</strong> switch in Profile, Notifications.
+      </li>
+    </ul>
   </section>
 
   <section>
@@ -417,14 +505,23 @@
       <a href="../">privacy policy</a>.
     </p>
     <p>
-      To remove everything, open <strong>Profile</strong> and tap <strong>Delete Account</strong>
-      at the bottom of the screen. That deletes your account and, with it, your transactions,
-      your uploaded statements, your budgets, category limits and rules, and any bank connection
-      along with the tokens behind it. It cannot be undone. If you would rather clear your
-      statements and keep your account, use <strong>Delete All Statements</strong> under
-      <strong>Profile → Privacy &amp; Data</strong> — that removes the uploads and their
-      transactions and leaves your account and settings as they are. The same section is where
-      you can re-read the AI processing disclosure and change your answer to it.
+      To delete your account and the data Nami holds against it, open
+      <strong>Profile, Privacy &amp; data, Delete account</strong> and confirm. That deletes
+      your account and, with it, your transactions, your uploaded statements, your budgets,
+      category limits and rules, your income and shifts, what Nami remembers, and any bank
+      connection along with the tokens behind it. It cannot be undone, and it does not cancel
+      a subscription, so cancel that first in the Settings app. If you would rather clear
+      your statements and keep your account, use <strong>Delete all statements</strong> in the
+      same section; that removes the uploads and their transactions and leaves your account
+      and settings as they are. The same section is where you can re-read the AI processing
+      disclosure and turn it off or on.
+    </p>
+    <p>
+      Do all three while you are online. Nami signs you out after Delete account even if the
+      request did not reach us, and it does not yet say when a deletion or a change to AI
+      processing fails. If you can still sign in after deleting your account, or a statement
+      comes back the next time you open Nami, delete it again, or write to us and we will do
+      it for you; the same goes for turning AI processing off.
     </p>
     <p>
       Nami does not currently offer a data export.
