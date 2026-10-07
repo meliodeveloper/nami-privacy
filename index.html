@@ -294,7 +294,7 @@
       number 16136624). Melio Labs Ltd is the controller of your personal data under UK
       data protection law, and you can reach us at the address at the foot of this page.
     </p>
-    <p class="stamp">Last updated: 5 October 2026</p>
+    <p class="stamp">Last updated: 7 October 2026</p>
   </section>
 
   <section class="ai-callout">
@@ -794,7 +794,9 @@
         <strong>RevenueCat:</strong> used to manage in-app subscription purchases. RevenueCat
         receives your opaque Supabase account ID, which is pseudonymous rather than anonymous
         (it carries no name and no email, but it does identify your account), along with your
-        purchase events from Apple's StoreKit. Before you sign in, it uses a random
+        purchase events from Apple's StoreKit, and a device identifier for this app that
+        Apple issues to Melio Labs (the vendor identifier), which RevenueCat uses to tell
+        one install from another. Before you sign in, it uses a random
         identifier of its own, which is joined to your account identifier when you sign in.
         Like any web service, it sees the IP address a request comes from, and its software
         sends your app and iOS versions. It does not see your name, email, or transaction
@@ -970,6 +972,8 @@
 </main>
 
 <footer>
+  <p>Melio Labs Ltd, registered in England and Wales, company number 16136624.<br>
+  Registered office: 1 High Gates, Sale, England, M33 2LN. Write to contact@meliolabs.io.</p>
   <p>&copy; 2026 Nami: Spending Tracker. All rights reserved.</p>
 </footer>
 
