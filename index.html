@@ -838,7 +838,9 @@
         PostHog's software tags events with a random identifier of its own, and joins them to
         your account identifier when you sign in. No event carries an amount, a merchant, an
         employer, a bank, an account or card name, a note, a search or the text of a
-        question; figures are sent only as broad bands, counts or yes and no. An event about a
+        question; figures are sent only as broad bands, counts or yes and no. It also receives how
+        long a screen was open and how long an answer took, in broad bands, and the kind of
+        error when something fails, never its text. An event about a
         category limit or a recategorised transaction carries the category's name when it is
         one of Nami's built-in categories; one you created is sent only as "custom". PostHog's
         software adds your device model, iOS version, app version, language and region, time
@@ -847,7 +849,8 @@
         not stored with your events, though PostHog may first use it to estimate a rough
         location, such as your country and city. Nami does not send crash reports to PostHog,
         it does not record your screen, and it does not collect your device's advertising
-        identifier.
+        identifier. You can turn this off at any time in Profile, Privacy and data, Share
+        usage analytics; while it is off, Nami sends no usage analytics from that phone.
         <a href="https://posthog.com/privacy" target="_blank">PostHog Privacy Policy</a>
       </li>
     </ul>
@@ -944,7 +947,8 @@
         remembers</strong>, one memory at a time or all at once with Forget everything.
       </li>
       <li>
-        Object to, or ask us to restrict, how we use your data, by writing to us.
+        Object to, or ask us to restrict, how we use your data, by writing to us, or turn off
+        Share usage analytics in Profile.
       </li>
       <li>Contact us with any privacy-related questions.</li>
     </ul>
