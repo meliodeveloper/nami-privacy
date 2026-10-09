@@ -294,7 +294,7 @@
       number 16136624). Melio Labs Ltd is the controller of your personal data under UK
       data protection law, and you can reach us at the address at the foot of this page.
     </p>
-    <p class="stamp">Last updated: 7 October 2026</p>
+    <p class="stamp">Last updated: 9 October 2026</p>
   </section>
 
   <section class="ai-callout">
@@ -431,6 +431,13 @@
         keeps only their start and end times, and keeps no event titles. You can remove the
         link at any time.
       </li>
+      <li>
+        <strong>Open banking waitlist, only if you join it:</strong> an email address you
+        give on the open banking waitlist on Nami's website is kept only to send you one
+        message when open banking is ready, and you can have it removed by replying to that
+        message or by writing to
+        <a href="mailto:contact@meliolabs.io">contact@meliolabs.io</a>.
+      </li>
     </ul>
     <p>
       Nami does not ask for your phone number, location, contacts or photo library, and it
@@ -452,10 +459,14 @@
       <strong>Tap to Log.</strong> Tap to Log works only if you build a Shortcuts automation
       yourself, on the Wallet trigger, which hands Nami the amount and the merchant name each
       time you pay with a card in Apple Wallet using Apple Pay. Nami does not read your card
-      or Apple Pay, and it holds no Wallet or Apple Pay permission. A purchase logged this way
-      is kept on your phone only, never uploaded, at most twenty at a time. It stays until
-      your bank's own copy of the purchase arrives, or for three days if none does, and then
-      Nami removes it.
+      or Apple Pay, and it holds no Wallet or Apple Pay permission. If your account has no
+      bank connected, a purchase logged this way, and one you add with Add a purchase, is
+      kept in your account like a statement row: its amount, the shop's name, the card's
+      issuer (such as Visa or Monzo, never the name you gave the card) and the time, so the
+      morning brief, budget alerts and a new phone count it. If a statement you upload
+      carries the same purchase, Nami hides the logged copy rather than deleting it, so the
+      purchase counts once. If your account has a bank connected, a logged purchase is kept
+      on your phone only until your bank's own copy arrives, or for three days if none does.
     </p>
     <p>
       <strong>The shared merchant book.</strong> When a purchase you logged with Tap to Log is
@@ -545,8 +556,10 @@
   <section id="open-banking">
     <h2>Connecting a Bank (Open Banking)</h2>
     <p>
-      Connecting a bank is optional, and it is part of Nami Pro. Nami works without it,
-      using statements you upload and purchases you log with Tap to Log. If you do connect
+      Connecting a bank is optional. For now it is open to a small group of testers
+      while we work to bring it to everyone; when it opens, it will be part of Nami
+      Pro. Nami works without it, using statements you upload and purchases you log
+      with Tap to Log. If you do connect
       one, the connection is made through <strong>TrueLayer</strong>, a UK open banking
       provider authorised and regulated by the Financial Conduct Authority. Here is exactly
       what happens:
@@ -865,7 +878,8 @@
       tokens behind a bank connection are held in a separate table that no client can read
       at all; only our backend service itself can. Your Ask Nami chats are kept on your phone,
       protected by iOS data protection and left out of iCloud and computer backups, and
-      purchases logged with Tap to Log are kept on your phone only.
+      purchases logged with Tap to Log wait on your phone only until Nami keeps them in your
+      account or, with a bank connected, until your bank's copy arrives.
     </p>
     <p>
       <strong>Where your data is processed.</strong> Your account and everything stored in
@@ -918,9 +932,10 @@
     </p>
     <p>
       Some things are kept for a set time. The start and end times of your coming shifts are
-      deleted a day after each shift ends. A purchase logged with Tap to Log stays on your
-      phone until your bank's copy of it arrives, or for three days if none does. The
-      scrambled daily codes behind the shared merchant book are deleted once their day is
+      deleted a day after each shift ends. With a bank connected, a purchase logged with Tap
+      to Log stays on your phone until your bank's copy of it arrives, or for three days if
+      none does. Otherwise it is kept in your account until you delete it or your account.
+      The scrambled daily codes behind the shared merchant book are deleted once their day is
       over.
     </p>
   </section>
