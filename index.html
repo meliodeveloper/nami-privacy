@@ -294,7 +294,7 @@
       number 16136624). Melio Labs Ltd is the controller of your personal data under UK
       data protection law, and you can reach us at the address at the foot of this page.
     </p>
-    <p class="stamp">Last updated: 29 October 2026</p>
+    <p class="stamp">Last updated: 4 November 2026</p>
   </section>
 
   <section class="ai-callout">
@@ -399,7 +399,7 @@
         and which calendar holds your rota; for each shift you have worked, its start and end
         times, its hours, the pay Nami worked out for it and an internal reference to the
         calendar entry, so the same shift is not counted twice; any payslip figures you
-        enter or keep from a payslip Nami reads; and income sources Nami found in your bank
+        enter or save from a payslip Nami reads; and income sources Nami found in your bank
         transactions, named after the
         counterparty on them.
       </li>
@@ -540,6 +540,7 @@
       <li>To keep a connected bank's accounts, balances and transactions up to date in the app.</li>
       <li>To securely store your data so it persists across sessions and devices.</li>
       <li>To categorise transactions, read statements and payslips, answer your questions and write your morning brief, through our AI provider, once you have agreed.</li>
+      <li>To keep a payslip on your device, when you switch on Keep this payslip.</li>
       <li>To send the notifications you have switched on and to keep the Lock Screen cards current.</li>
       <li>To understand, through product analytics, which parts of the app are used, so we can improve it.</li>
     </ul>
@@ -560,6 +561,16 @@
       <li>
         <strong>With your consent:</strong> sending your data for AI processing. You can
         withdraw it at any time, as described in <a href="#ai-processing">AI Processing</a>.
+      </li>
+      <li>
+        <strong>With your explicit consent:</strong> sending a payslip for Nami to read, and
+        keeping it on your device when you switch on Keep this payslip. A payslip can show
+        details about your health, such as sick pay, a pregnancy, such as maternity pay, union
+        membership, or a deduction ordered by a court, so this consent is asked for on its own.
+        You can stop payslip reading at any time, as described in
+        <a href="#ai-processing">AI Processing</a>. You stop keeping a payslip by deleting it in
+        <strong>Profile, Payslips read</strong>; turning payslip reading off stops new reads and
+        leaves kept payslips until you delete them.
       </li>
       <li>
         <strong>Our legitimate interest in keeping Nami working and improving it:</strong>
@@ -685,8 +696,13 @@
         basic hours, rate and gross pay for the period, your tax code, National Insurance
         letter, pension, student loan and year to date figures. Nothing is saved until you
         check the values, and only the ones you keep are stored, with your employer, in your
-        account. Nami does not keep a payslip it reads for you, on your phone or on our
-        servers. A PDF password is used on your phone only and is never sent. Payslip reading
+        account. Nami does not keep a payslip it reads for you on our servers. If you switch
+        on Keep this payslip before you save, the pictures Nami read stay on your device only,
+        with everything printed on them and your National Insurance number covered where Nami
+        found it. With them, Nami keeps what it read from the payslip, the employer you saved,
+        the pay date it read and the day it read it, so they can be listed by employer in
+        <strong>Profile, Payslips read</strong>. For a PDF, that is the pictures of its first
+        two pages, never the file. A PDF password is used on your phone only and is never sent. Payslip reading
         has its own agreement, asked before the first payslip is sent and checked on our
         server before each one. It does not need AI processing to be on, and turning AI
         processing off turns it off too. You can turn it off on its own from
@@ -784,7 +800,7 @@
       API. Anthropic does not use your data to train AI models. It is deleted within 30 days
       in normal use, unless Anthropic has to keep it longer to enforce its usage rules or by
       law. We keep the resulting transaction records, memories, briefs and the pay details
-      you keep from a payslip in your account so they appear when you reopen the app. For
+      you save from a payslip in your account so they appear when you reopen the app. For
       more information, see the
       <a href="https://www.anthropic.com/legal/privacy" target="_blank">Anthropic Privacy Policy</a>.
     </p>
@@ -919,8 +935,8 @@
       no other user can access your data. All data is transmitted over HTTPS. The AI
       provider's API key is stored server-side and never included in the app binary. The
       tokens behind a bank connection are held in a separate table that no client can read
-      at all; only our backend service itself can. Your Ask Nami chats are kept on your phone,
-      protected by iOS data protection and left out of iCloud and computer backups, and
+      at all; only our backend service itself can. Your Ask Nami chats, and any payslips you
+      choose to keep, are kept on your device, protected by iOS data protection and left out of iCloud and computer backups, and
       purchases logged with Tap to Log wait on your phone only until Nami keeps them in your
       account or, with a bank connected, until your bank's copy arrives.
     </p>
@@ -946,7 +962,9 @@
       database, including your transactions and statements, your budgets and settings, your
       income, shifts and rota feed, your Net Wealth accounts and history, your memories and
       briefs, your notification tokens, and any connected bank with the access tokens behind
-      it, and cannot be undone. Our database is backed up daily and each backup is kept for
+      it, and cannot be undone. Payslips you kept are deleted from this device when Nami
+      signs you out, and from your other devices the next time Nami opens on them. Our
+      database is backed up daily and each backup is kept for
       about a week, so a deleted account can remain in those backups until they roll over.
       If you would rather keep your account, <strong>Delete all statements</strong> in the
       same section removes every uploaded statement and its transactions.
@@ -981,6 +999,11 @@
       The scrambled daily codes behind the shared merchant book are deleted once their day is
       over.
     </p>
+    <p>
+      A payslip you keep has no set time. It stays on the device you kept it on until you
+      delete it, remove that employer on that device, sign out, delete your account or delete
+      Nami from that device. Turning payslip reading off does not delete it.
+    </p>
   </section>
 
   <section>
@@ -1003,6 +1026,10 @@
       <li>
         See and delete what Nami remembers from <strong>Profile, Privacy &amp; data, Nami
         remembers</strong>, one memory at a time or all at once with Forget everything.
+      </li>
+      <li>
+        See and delete the payslips you kept on your device from <strong>Profile, Payslips
+        read</strong>, one at a time or all of an employer's at once.
       </li>
       <li>
         Object to, or ask us to restrict, how we use your data, by writing to us, or turn off
