@@ -18,27 +18,50 @@ sources:
     url: https://www.fca.org.uk/news/press-releases/new-protections-confirmed-buy-now-pay-later-borrowers
 sections:
   - heading: What it is
-    text: >-
-      Buy now, pay later splits a purchase into a few payments, usually over weeks
-      or a few months. Some plans charge no interest if you pay on time. Others,
-      like longer plans on a bank card, charge interest from the start.
+    text: |-
+      Buy now, pay later splits a purchase into a few payments, usually over a few weeks or months. It is borrowing, even when it costs nothing extra.
+
+      There are two common kinds:
+
+      - **Interest-free plans**, often three or four payments, usually at a shop's checkout. No interest if you pay on time.
+      - **Longer plans**, including some on a bank card or account, that charge interest from the start. These are closer to a loan.
   - heading: The new rules
-    text: >-
-      Since 15 July 2026, most buy now, pay later is regulated by the FCA. Lenders
-      have to check you can afford it, explain it clearly and treat you fairly if
-      you struggle, and you can complain to the Financial Ombudsman.
+    text: |-
+      Since 15 July 2026, most interest-free buy now, pay later is regulated by the FCA. For plans taken out from that date, lenders have to:
+
+      - Check you can afford it before lending
+      - Explain clearly what you are agreeing to
+      - Treat you fairly if you struggle to pay
+
+      You can also complain to the Financial Ombudsman if something goes wrong. Plans taken out before 15 July 2026 don't have these protections.
+  - heading: A worked example
+    text: |-
+      Each plan feels small on its own. Here is what three at once can look like:
+
+      - Trainers, £120 in 3 payments: £40 a month
+      - Jacket, £90 in 3 payments: £30 a month
+      - Headphones, £240 in 4 payments: £60 a month
+      - **£130 of next month's pay already gone before it arrives**
+
+      Add a fourth plan, and it is easy to be paying for last month's shopping with this month's money, every month.
   - heading: Where it catches people out
-    text: >-
-      Each plan feels small on its own. Several at once can take a big share of
-      next month's pay before it arrives. Missed payments can bring late fees and
-      can show on your credit file.
-  - heading: A simple check
-    text: >-
-      Before you split a payment, add up what you already owe across every plan
-      and every app. If that total would worry you as one number, it is worth
-      pausing.
+    text: |-
+      - **Missed payments** can bring late fees, and some providers report them to credit reference agencies.
+      - **Several apps** make it hard to see the total you owe in one place.
+      - **Returns** can be slow to cancel a plan, so payments may keep going for a while.
+      - **Paying one plan with another**, or with a credit card, is a sign the borrowing has got ahead of you.
+  - heading: A simple check before you split a payment
+    text: |-
+      Add up what you already owe across every plan and every app. Then ask yourself:
+
+      - Would I buy this today if I had to pay in full?
+      - Would the total worry me if I saw it as one number?
+      - Are next month's payments covered after rent and bills?
+
+      If any answer gives you pause, it is worth waiting.
   - heading: If you are behind
-    text: >-
-      Contact the provider early. They have to consider your situation, and free
-      debt advice is available from MoneyHelper.
+    text: |-
+      Contact the provider early, before a payment is missed if you can. Under the new rules they have to consider your situation, which can mean more time or a payment plan.
+
+      Free, confidential debt advice is available from MoneyHelper.
 ---
