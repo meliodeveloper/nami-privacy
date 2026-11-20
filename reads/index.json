@@ -1,0 +1,36 @@
+---
+layout: null
+permalink: /reads/index.json
+---
+{%- assign reads = site.reads | where_exp: "r", "r.draft != true" | sort: "order" -%}
+{
+  "version": 1,
+  "updated": {{ site.time | date_to_xmlschema | jsonify }},
+  "library_art": {{ "/reads/art/reads.jpg" | absolute_url | jsonify }},
+  "reads": [
+  {%- for r in reads %}
+    {
+      "id": {{ r.slug | jsonify }},
+      "title": {{ r.title | jsonify }},
+      "dek": {{ r.dek | jsonify }},
+      "topic": {{ r.topic | jsonify }},
+      "minutes": {{ r.minutes | jsonify }},
+      "symbol": {{ r.symbol | jsonify }},
+      "order": {{ r.order | jsonify }},
+      "shows_when": {{ r.shows_when | jsonify }},
+      "foot_of": {{ r.foot_of | jsonify }},
+      "your_numbers": {{ r.your_numbers | jsonify }},
+      "ask": {{ r.ask | jsonify }},
+      "checked": {{ r.checked | date: "%Y-%m-%d" | jsonify }},
+      "review_by": {{ r.review_by | date: "%Y-%m-%d" | jsonify }},
+      "min_app_version": {{ r.min_app_version | default: "" | jsonify }},
+      "web_url": {{ r.url | absolute_url | jsonify }},
+      {%- assign art = r.art | default: r.slug %}
+      "art_url": {{ "/reads/art/" | append: art | append: ".jpg" | absolute_url | jsonify }},
+      "thumb_url": {{ "/reads/art/" | append: art | append: "-thumb.jpg" | absolute_url | jsonify }},
+      "sources": {{ r.sources | jsonify }},
+      "sections": {{ r.sections | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {%- endfor %}
+  ]
+}

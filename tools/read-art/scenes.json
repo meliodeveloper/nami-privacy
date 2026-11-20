@@ -1,0 +1,465 @@
+{
+ "reads": {
+  "seed": 11,
+  "stars": 0,
+  "sky": [
+   "#3B2A33",
+   "#A8604A",
+   "#E9B48F"
+  ],
+  "body": [
+   0.68,
+   0.5,
+   0.045,
+   "#FFE7CF",
+   "rgba(255,200,160,0.55)"
+  ],
+  "layers": [
+   {
+    "y": 0.66,
+    "amp": 0.2,
+    "top": "#B87A68",
+    "bottom": "#9C6556",
+    "detail": 5
+   },
+   {
+    "y": 0.76,
+    "amp": 0.18,
+    "top": "#7E4E45",
+    "bottom": "#6A3F38",
+    "detail": 7
+   },
+   {
+    "y": 0.9,
+    "amp": 0.16,
+    "top": "#4A2E2C",
+    "bottom": "#2E1C1B",
+    "detail": 9
+   }
+  ],
+  "foot": "rgba(20,10,10,0.35)"
+ },
+ "tax-code": {
+  "seed": 21,
+  "stars": 260,
+  "sky": [
+   "#121530",
+   "#252B57",
+   "#4F5B85"
+  ],
+  "body": [
+   0.74,
+   0.22,
+   0.03,
+   "#EDEBFF",
+   "rgba(180,186,230,0.35)"
+  ],
+  "layers": [
+   {
+    "kind": "peaks",
+    "y": 0.7,
+    "amp": 0.42,
+    "top": "#3A4270",
+    "bottom": "#2C3360",
+    "detail": 7
+   },
+   {
+    "kind": "peaks",
+    "y": 0.82,
+    "amp": 0.3,
+    "top": "#262C52",
+    "bottom": "#1D2244",
+    "detail": 9
+   },
+   {
+    "y": 0.95,
+    "amp": 0.14,
+    "top": "#141833",
+    "bottom": "#0E1126",
+    "detail": 12
+   }
+  ]
+ },
+ "payslip": {
+  "seed": 32,
+  "stars": 40,
+  "sky": [
+   "#1F2A55",
+   "#5E6CA8",
+   "#C9B9D9"
+  ],
+  "body": [
+   0.3,
+   0.6,
+   0.04,
+   "#FFF1E3",
+   "rgba(255,220,200,0.45)"
+  ],
+  "layers": [
+   {
+    "y": 0.68,
+    "amp": 0.14,
+    "top": "#7280B4",
+    "bottom": "#5D6AA0",
+    "detail": 4
+   },
+   {
+    "y": 0.78,
+    "amp": 0.14,
+    "top": "#45508A",
+    "bottom": "#3A4479",
+    "detail": 6
+   },
+   {
+    "y": 0.92,
+    "amp": 0.12,
+    "top": "#262D5C",
+    "bottom": "#1A2048",
+    "detail": 8
+   }
+  ]
+ },
+ "student-loan": {
+  "seed": 43,
+  "stars": 120,
+  "sky": [
+   "#1C1836",
+   "#4A3E78",
+   "#9C86C2"
+  ],
+  "body": [
+   0.22,
+   0.3,
+   0.028,
+   "#F4EEFF",
+   "rgba(200,180,240,0.35)"
+  ],
+  "crescent": true,
+  "layers": [
+   {
+    "y": 0.72,
+    "amp": 0.2,
+    "top": "#5E4F8E",
+    "bottom": "#4C3F78",
+    "detail": 5
+   },
+   {
+    "y": 0.84,
+    "amp": 0.16,
+    "top": "#3A3062",
+    "bottom": "#2E2650",
+    "detail": 7
+   },
+   {
+    "y": 0.95,
+    "amp": 0.08,
+    "top": "#1E1A3A",
+    "bottom": "#15122A",
+    "detail": 10
+   }
+  ]
+ },
+ "pension-match": {
+  "seed": 54,
+  "stars": 0,
+  "sky": [
+   "#2C3666",
+   "#7D88BE",
+   "#F1D6C2"
+  ],
+  "body": [
+   0.5,
+   0.62,
+   0.05,
+   "#FFF4E6",
+   "rgba(255,226,196,0.5)"
+  ],
+  "layers": [
+   {
+    "kind": "peaks",
+    "y": 0.64,
+    "amp": 0.18,
+    "top": "#9AA3CF",
+    "bottom": "#8790C0",
+    "detail": 10
+   },
+   {
+    "kind": "peaks",
+    "y": 0.74,
+    "amp": 0.2,
+    "top": "#6570A6",
+    "bottom": "#56618F",
+    "detail": 8
+   },
+   {
+    "y": 0.88,
+    "amp": 0.12,
+    "top": "#38406E",
+    "bottom": "#2A315A",
+    "detail": 6
+   },
+   {
+    "y": 0.97,
+    "amp": 0.06,
+    "top": "#1D2244",
+    "bottom": "#141831",
+    "detail": 8
+   }
+  ]
+ },
+ "last-week": {
+  "seed": 65,
+  "stars": 70,
+  "sky": [
+   "#14231C",
+   "#3E5A45",
+   "#B9C7A2"
+  ],
+  "body": [
+   0.78,
+   0.38,
+   0.026,
+   "#F6FFE9",
+   "rgba(200,230,180,0.35)"
+  ],
+  "crescent": true,
+  "layers": [
+   {
+    "y": 0.7,
+    "amp": 0.18,
+    "top": "#5E7A5C",
+    "bottom": "#4E6A4D",
+    "detail": 5
+   },
+   {
+    "y": 0.8,
+    "amp": 0.18,
+    "top": "#3A5240",
+    "bottom": "#2F4535",
+    "detail": 7
+   },
+   {
+    "y": 0.93,
+    "amp": 0.12,
+    "top": "#1D2C22",
+    "bottom": "#121C16",
+    "detail": 9
+   }
+  ]
+ },
+ "subscriptions": {
+  "seed": 76,
+  "stars": 30,
+  "sky": [
+   "#1B2E2A",
+   "#4F7468",
+   "#D8CFA6"
+  ],
+  "body": [
+   0.6,
+   0.52,
+   0.04,
+   "#FFF8E2",
+   "rgba(255,236,190,0.45)"
+  ],
+  "layers": [
+   {
+    "kind": "waves",
+    "freq": 5,
+    "y": 0.66,
+    "amp": 0.1,
+    "top": "#6F9083",
+    "bottom": "#5E7F73",
+    "detail": 4
+   },
+   {
+    "kind": "waves",
+    "freq": 7,
+    "y": 0.76,
+    "amp": 0.12,
+    "top": "#466A5F",
+    "bottom": "#3A5C52",
+    "detail": 5,
+    "reflect": true
+   },
+   {
+    "kind": "waves",
+    "freq": 9,
+    "y": 0.88,
+    "amp": 0.12,
+    "top": "#28443D",
+    "bottom": "#1C332D",
+    "detail": 6
+   },
+   {
+    "kind": "waves",
+    "freq": 11,
+    "y": 0.97,
+    "amp": 0.08,
+    "top": "#14251F",
+    "bottom": "#0D1A16",
+    "detail": 7
+   }
+  ]
+ },
+ "overdraft-fees": {
+  "seed": 87,
+  "stars": 0,
+  "sky": [
+   "#2B1A1A",
+   "#8A4A36",
+   "#E7A779"
+  ],
+  "body": [
+   0.32,
+   0.55,
+   0.035,
+   "#FFE2C6",
+   "rgba(255,170,120,0.5)"
+  ],
+  "layers": [
+   {
+    "kind": "peaks",
+    "y": 0.7,
+    "amp": 0.3,
+    "top": "#9A5A45",
+    "bottom": "#87503D",
+    "detail": 9
+   },
+   {
+    "kind": "peaks",
+    "y": 0.82,
+    "amp": 0.3,
+    "top": "#5E3429",
+    "bottom": "#4C2A22",
+    "detail": 11
+   },
+   {
+    "y": 0.95,
+    "amp": 0.1,
+    "top": "#2A1714",
+    "bottom": "#1C0F0D",
+    "detail": 10
+   }
+  ]
+ },
+ "pay-later": {
+  "seed": 98,
+  "stars": 0,
+  "sky": [
+   "#2E1B2A",
+   "#9A5468",
+   "#F0B39A"
+  ],
+  "body": [
+   0.72,
+   0.6,
+   0.042,
+   "#FFEBD6",
+   "rgba(255,190,170,0.5)"
+  ],
+  "layers": [
+   {
+    "y": 0.7,
+    "amp": 0.16,
+    "top": "#B07460",
+    "bottom": "#9C6553",
+    "detail": 4
+   },
+   {
+    "y": 0.8,
+    "amp": 0.18,
+    "top": "#7A4A3E",
+    "bottom": "#673E34",
+    "detail": 6
+   },
+   {
+    "y": 0.92,
+    "amp": 0.14,
+    "top": "#45291F",
+    "bottom": "#311C16",
+    "detail": 8
+   }
+  ]
+ },
+ "emergency-pot": {
+  "seed": 109,
+  "stars": 200,
+  "sky": [
+   "#1A1428",
+   "#43345E",
+   "#8C76A8"
+  ],
+  "body": [
+   0.5,
+   0.34,
+   0.032,
+   "#F7F0FF",
+   "rgba(210,190,240,0.4)"
+  ],
+  "layers": [
+   {
+    "kind": "peaks",
+    "y": 0.62,
+    "amp": 0.2,
+    "top": "#4F4070",
+    "bottom": "#45386A",
+    "detail": 7
+   },
+   {
+    "y": 0.66,
+    "amp": 0.0,
+    "top": "#5A4A7E",
+    "bottom": "#2A2142",
+    "detail": 2,
+    "reflect": true
+   },
+   {
+    "y": 0.96,
+    "amp": 0.05,
+    "top": "#1A1428",
+    "bottom": "#120E1C",
+    "detail": 6
+   }
+  ]
+ },
+ "new-tax-year": {
+  "seed": 120,
+  "stars": 0,
+  "sky": [
+   "#3A4E7A",
+   "#A8B6D6",
+   "#F6E3C8"
+  ],
+  "body": [
+   0.26,
+   0.56,
+   0.05,
+   "#FFF8EC",
+   "rgba(255,236,206,0.55)"
+  ],
+  "layers": [
+   {
+    "y": 0.66,
+    "amp": 0.12,
+    "top": "#B5C3A4",
+    "bottom": "#A4B492",
+    "detail": 4
+   },
+   {
+    "y": 0.76,
+    "amp": 0.14,
+    "top": "#7F9A72",
+    "bottom": "#6E8963",
+    "detail": 6
+   },
+   {
+    "y": 0.9,
+    "amp": 0.12,
+    "top": "#4B6447",
+    "bottom": "#3B5238",
+    "detail": 8
+   }
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+# Nami support site. Pages without front matter (the privacy policy and
+# support pages) are copied as they are. The only thing Jekyll builds here
+# is Nami Reads: one file per read in _reads, published as a web page at
+# /reads/<id>/ and listed for the app in /reads/index.json.
+title: "Nami: Spending Tracker"
+url: "https://meliodeveloper.github.io"
+baseurl: "/nami-privacy"
+collections:
+  reads:
+    output: true
+    permalink: /reads/:name/
+exclude:
+  - READS.md
+  - tools
+  - Gemfile
+  - Gemfile.lock
+defaults:
+  - scope:
+      type: reads
+    values:
+      layout: read

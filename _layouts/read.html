@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}, Nami Reads</title>
+  <meta name="description" content="{{ page.dek | escape }}" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#FCFCFB" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  {% include site-style.html %}
+  <style>
+    .dek { color: var(--ink-soft); font-size: 1.08rem; margin-top: 14px; }
+    .hero { position: relative; max-width: 900px; margin: 0 auto; aspect-ratio: 1290 / 1000; max-height: 420px; width: 100%; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 40%; background: linear-gradient(to bottom, transparent, var(--paper)); }
+    .hero + .masthead { padding-top: 8px; }
+    .sources { color: var(--ink-soft); font-size: 0.9rem; }
+    .sources ul { margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+{%- assign art = page.art | default: page.slug %}
+<div class="hero"><img src="{{ '/reads/art/' | append: art | append: '.jpg' | relative_url }}" alt="" /></div>
+<header class="masthead">
+  <p class="masthead-eyebrow">Nami Reads &middot; {% include read-topic.html topic=page.topic %} &middot; {{ page.minutes }} min read</p>
+  <h1>{{ page.title }}</h1>
+  <p class="dek">{{ page.dek }}</p>
+</header>
+
+<main>
+  {%- for section in page.sections %}
+  <section>
+    <h2>{{ section.heading }}</h2>
+    {{ section.text | markdownify }}
+  </section>
+  {%- endfor %}
+  <section class="sources">
+    <p>Sources:</p>
+    <ul>
+      {%- for source in page.sources %}
+      <li><a href="{{ source.url }}">{{ source.name }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p class="stamp">Checked {{ page.checked | date: "%-d %B %Y" }}. General information, not financial advice.</p>
+  </section>
+</main>
+
+<footer>
+  <p>
+    &copy; 2026 Melio Labs Ltd. Nami: Spending Tracker.
+    &middot; <a href="{{ '/reads/' | relative_url }}">All reads</a>
+    &middot; <a href="{{ '/support/' | relative_url }}">Support</a>
+    &middot; <a href="{{ '/' | relative_url }}">Privacy policy</a>
+  </p>
+</footer>
+
+</body>
+</html>
