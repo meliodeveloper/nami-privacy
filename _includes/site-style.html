@@ -1,0 +1,261 @@
+<style>
+    /* ------------------------------------------------------------------
+       RevivalTheme: paper and ink.
+       Light tokens on :root, dark tokens swapped in prefers-color-scheme
+       only (GitHub Pages does not stamp a theme attribute).
+       One accent on the page: the reply-time mark in the masthead.
+
+       THIS STYLESHEET IS A COPY OF ../index.html's, BYTE FOR BYTE.
+       The privacy policy and this page are one visual system; when a
+       token or a rule changes there, change it here too rather than
+       letting the two drift.
+       ------------------------------------------------------------------ */
+    :root {
+      color-scheme: light;
+
+      --paper:    #FCFCFB;
+      --card:     #FFFDFA;
+      --ink:      #2E2C27;
+      --ink-soft: #6B6A63;
+      --ink-grey: #B4B3A8;
+      --hairline: #E4E3DC;
+      --accent:   #C6613F;
+
+      --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino,
+               "Hoefler Text", Georgia, "Times New Roman", serif;
+      --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+
+      --measure: 65ch;
+      --gutter: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+
+        --paper:    #171613;
+        --card:     #201E1A;
+        --ink:      #EBE8E0;
+        --ink-soft: #9C988C;
+        --ink-grey: #6F6B60;
+        --hairline: #33302A;
+        --accent:   #DE8460;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      background: var(--paper);
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* One column, one measure, shared by masthead, body and colophon. */
+    .masthead,
+    main,
+    footer {
+      max-width: var(--measure);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ---------- masthead ---------- */
+
+    .masthead {
+      padding-top: 56px;
+      padding-bottom: 30px;
+    }
+
+    .masthead-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .masthead h1 {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 100;
+      font-weight: 500;
+      font-size: clamp(2.15rem, 1.55rem + 2.6vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      color: var(--ink);
+    }
+
+    /* ---------- body ---------- */
+
+    main { padding-bottom: 0; }
+
+    /* Sections are separated by a rule, never boxed. */
+    section { padding: 34px 0; }
+    section + section { border-top: 1px solid var(--hairline); }
+
+    h2 {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 32;
+      font-weight: 600;
+      font-size: 1.32rem;
+      line-height: 1.25;
+      letter-spacing: -0.012em;
+      text-wrap: balance;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    strong { font-weight: 600; color: var(--ink); }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.15em;
+      margin-bottom: 16px;
+    }
+
+    ul:last-child { margin-bottom: 0; }
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 0.15em;
+    }
+
+    li:last-child { margin-bottom: 0; }
+    li::marker { color: var(--ink-soft); }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--hairline);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 120ms ease;
+    }
+
+    a:hover { text-decoration-color: var(--ink); }
+
+    a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* The single accent on the page: the mark against the revision date. */
+    .stamp {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 22px;
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      color: var(--ink-soft);
+    }
+
+    .stamp::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 20px;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--accent);
+      transform: translateY(-0.28em);
+    }
+
+    /* ---------- the "At a glance" card ---------- */
+
+    .ai-callout {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      padding: 26px 22px;
+      margin: 30px 0;
+      box-shadow: none;
+    }
+
+    .ai-callout h2 {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* The AI tag reads as an eyebrow above the heading, not a badge. */
+    .ai-callout .ai-badge {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    /* The card carries its own border, so no rule is drawn against it. */
+    .ai-callout + section { border-top: 0; }
+
+    /* ---------- colophon ---------- */
+
+    footer {
+      border-top: 1px solid var(--hairline);
+      padding-top: 26px;
+      padding-bottom: 64px;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+
+    /* Nothing wide should ever push the page sideways. */
+    table, pre {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    /* ---------- wider than a phone ---------- */
+
+    @media (min-width: 640px) {
+      :root { --gutter: 32px; }
+
+      body { font-size: 17.5px; }
+
+      .masthead { padding-top: 88px; padding-bottom: 36px; }
+      .masthead-eyebrow { margin-bottom: 20px; }
+
+      section { padding: 44px 0; }
+      h2 { font-size: 1.45rem; }
+
+      .ai-callout { padding: 32px 30px; margin: 40px 0; }
+
+      footer { padding-top: 32px; padding-bottom: 88px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
