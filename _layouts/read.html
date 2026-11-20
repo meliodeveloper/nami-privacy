@@ -14,12 +14,18 @@
   {% include site-style.html %}
   <style>
     .dek { color: var(--ink-soft); font-size: 1.08rem; margin-top: 14px; }
+    .hero { position: relative; max-width: 900px; margin: 0 auto; aspect-ratio: 1290 / 1000; max-height: 420px; width: 100%; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 40%; background: linear-gradient(to bottom, transparent, var(--paper)); }
+    .hero + .masthead { padding-top: 8px; }
     .sources { color: var(--ink-soft); font-size: 0.9rem; }
     .sources ul { margin-top: 8px; }
   </style>
 </head>
 <body>
 
+{%- assign art = page.art | default: page.slug %}
+<div class="hero"><img src="{{ '/reads/art/' | append: art | append: '.jpg' | relative_url }}" alt="" /></div>
 <header class="masthead">
   <p class="masthead-eyebrow">Nami Reads &middot; {% include read-topic.html topic=page.topic %} &middot; {{ page.minutes }} min read</p>
   <h1>{{ page.title }}</h1>

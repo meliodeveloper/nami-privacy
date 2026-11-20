@@ -47,6 +47,21 @@ its id and must never change once published), and fill in every field.
 `pension_payslip`, `budget_pace`, `subscriptions_month`, `fees_month`,
 `flex_balance`, `none`.
 
+## Art
+
+Each read has a scene behind its title in the app and on its web page, and a
+square thumbnail in lists: `reads/art/<id>.jpg` (1290 by 1000) and
+`reads/art/<id>-thumb.jpg` (360 by 360). `reads/art/reads.jpg` is the general
+Reads scene at the top of the list. A read can borrow another read's art with
+`art: <other id>`.
+
+The scenes are drawn, not photos: layered hills or peaks, a sky, a sun or
+moon, in the read's topic colours (Pay & tax blues, Spending greens,
+Borrowing ambers, Saving lilacs). `tools/read-art/` holds the drawing page and
+each scene's settings in `scenes.json`. Add a scene there for a new read, and
+run `node render.js ../../reads/art` from that folder to draw them all. If a
+read has no art yet, the app draws its topic's colours instead.
+
 ## House rules
 
 - Explain, never recommend a product or provider.

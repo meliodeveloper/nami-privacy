@@ -11,6 +11,7 @@ collections:
     permalink: /reads/:name/
 exclude:
   - READS.md
+  - tools
   - Gemfile
   - Gemfile.lock
 defaults:

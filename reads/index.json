@@ -6,6 +6,7 @@ permalink: /reads/index.json
 {
   "version": 1,
   "updated": {{ site.time | date_to_xmlschema | jsonify }},
+  "library_art": {{ "/reads/art/reads.jpg" | absolute_url | jsonify }},
   "reads": [
   {%- for r in reads %}
     {
@@ -24,6 +25,9 @@ permalink: /reads/index.json
       "review_by": {{ r.review_by | date: "%Y-%m-%d" | jsonify }},
       "min_app_version": {{ r.min_app_version | default: "" | jsonify }},
       "web_url": {{ r.url | absolute_url | jsonify }},
+      {%- assign art = r.art | default: r.slug %}
+      "art_url": {{ "/reads/art/" | append: art | append: ".jpg" | absolute_url | jsonify }},
+      "thumb_url": {{ "/reads/art/" | append: art | append: "-thumb.jpg" | absolute_url | jsonify }},
       "sources": {{ r.sources | jsonify }},
       "sections": {{ r.sections | jsonify }}
     }{% unless forloop.last %},{% endunless %}
