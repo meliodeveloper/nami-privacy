@@ -1,0 +1,42 @@
+// Nami Reads scene art: the layered landscape every read's header uses,
+// drawn from a small description (sky colours, sun or moon, bands of land).
+// The same drawing code as tools/read-art/scenes.html, which made the
+// scenes in reads/art; the article editor uses it to draw "Generate art"
+// options in the browser. Full size 1290 x 1000, thumbnail 360 x 360.
+(function () {
+"use strict";
+function rng(seed){let s=seed>>>0||1;return()=>{s^=s<<13;s>>>=0;s^=s>>17;s^=s<<5;s>>>=0;return s/4294967296}}
+function hexToRgb(h){h=h.replace('#','');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function mix(a,b,t){const A=hexToRgb(a),B=hexToRgb(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')})`}
+function noise1(r,n){const pts=[];for(let i=0;i<=n;i++)pts.push(r());return x=>{const f=x*n,i=Math.floor(f),t=f-i,s=t*t*(3-2*t);return pts[Math.min(i,n)]*(1-s)+pts[Math.min(i+1,n)]*s}}
+function draw(sc,W,H){
+ const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');const r=rng(sc.seed);
+ // sky
+ const sky=g.createLinearGradient(0,0,0,H*0.8);sc.sky.forEach((col,i)=>sky.addColorStop(i/(sc.sky.length-1),col));g.fillStyle=sky;g.fillRect(0,0,W,H);
+ // stars
+ if(sc.stars){for(let i=0;i<sc.stars*W/1000;i++){const x=r()*W,y=r()*H*0.55,a=0.25+r()*0.6,s=(r()<0.08?1.6:0.8)*W/1290;g.fillStyle=`rgba(255,255,255,${a*(1-y/(H*0.6))})`;g.beginPath();g.arc(x,y,s,0,7);g.fill()}}
+ // body (sun or moon)
+ if(sc.body){const[bx,by,br,col,glow]=sc.body;const X=bx*W,Y=by*H,R=br*W;const gl=g.createRadialGradient(X,Y,R*0.5,X,Y,R*6);gl.addColorStop(0,glow);gl.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gl;g.fillRect(0,0,W,H);g.fillStyle=col;g.beginPath();g.arc(X,Y,R,0,7);g.fill();
+  if(sc.crescent){g.fillStyle=sc.sky[Math.min(1,sc.sky.length-1)];g.beginPath();g.arc(X+R*0.45,Y-R*0.2,R*0.92,0,7);g.fill()}}
+ // layers back to front
+ sc.layers.forEach((L,li)=>{const n=noise1(r,L.detail||6),n2=noise1(r,(L.detail||6)*5);
+  const base=L.y*H,amp=L.amp*H;
+  g.beginPath();g.moveTo(0,H);
+  for(let x=0;x<=W;x+=2){const u=x/W;let h;
+   if(L.kind==='peaks'){h=Math.pow(n(u),1.6)*amp+n2(u)*amp*0.18}
+   else if(L.kind==='waves'){h=(Math.sin(u*Math.PI*(L.freq||6)+li)*0.5+0.5)*amp*0.35+n(u)*amp*0.25}
+   else if(L.kind==='terraces'){h=Math.round(n(u)*5)/5*amp+n2(u)*amp*0.04}
+   else if(L.kind==='mesa'){const v=n(u);h=(v>0.55?amp:v*amp*0.5)+n2(u)*amp*0.05}
+   else {h=n(u)*amp+n2(u)*amp*0.08}
+   g.lineTo(x,base-h)}
+  g.lineTo(W,H);g.closePath();
+  const lg=g.createLinearGradient(0,base-amp,0,H);lg.addColorStop(0,L.top);lg.addColorStop(1,L.bottom||L.top);g.fillStyle=lg;g.fill();
+  if(L.reflect){g.save();g.globalAlpha=0.12;g.fillStyle='#fff';for(let i=0;i<40;i++){const y=base+r()*(H-base),w=W*(0.05+r()*0.2);g.fillRect(sc.body?sc.body[0]*W-w/2:r()*W,y,w,1.5*W/1290)}g.restore()}
+ });
+ // haze + grain
+ const hz=g.createLinearGradient(0,H*0.45,0,H);hz.addColorStop(0,'rgba(0,0,0,0)');hz.addColorStop(1,sc.foot||'rgba(0,0,0,0.25)');g.fillStyle=hz;g.fillRect(0,0,W,H);
+ const id=g.getImageData(0,0,W,H),d=id.data;for(let i=0;i<d.length;i+=4){const k=(r()-0.5)*10;d[i]+=k;d[i+1]+=k;d[i+2]+=k}g.putImageData(id,0,0);
+ return c;
+}
+window.NamiSceneArt = { draw: draw, FULL: [1290, 1000], THUMB: [360, 360] };
+})();
