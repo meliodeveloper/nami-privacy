@@ -134,19 +134,21 @@ permalink: /reads/editor/
 <div class="ed-narrow" id="viewSignIn" hidden>
   <div class="ed-card">
     <h2 id="signInTitle">Sign in to write articles</h2>
-    <p class="ed-hint" id="signInHint">Use your editor login. This is separate from signing in to Nami with Apple.</p>
+    <p class="ed-hint" id="signInHint">Use the email of your Nami account. We'll email you a link that signs you in, with no password.</p>
     <div id="signInError" class="ed-error" hidden></div>
     <div id="signInOk" class="ed-ok" hidden></div>
     <form id="signInForm">
       <label class="ed-field"><span>Email</span><input class="ed-input" type="email" id="email" autocomplete="username" required /></label>
-      <label class="ed-field" id="passwordField"><span>Password</span><input class="ed-input" type="password" id="password" autocomplete="current-password" minlength="8" /></label>
+      <label class="ed-field" id="passwordField" hidden><span>Password</span><input class="ed-input" type="password" id="password" autocomplete="current-password" minlength="8" /></label>
       <div class="ed-head">
-        <button class="ed-btn primary" type="submit" id="signInButton">Sign in</button>
+        <button class="ed-btn primary" type="submit" id="signInButton">Email me a sign-in link</button>
       </div>
     </form>
     <p class="ed-help" style="margin-top:16px">
-      <button class="ed-link" id="toCreate">First time? Create your editor login</button><br />
-      <button class="ed-link" id="toReset">Forgot your password?</button>
+      <button class="ed-link" id="toPassword">Use a password instead</button>
+      <button class="ed-link" id="toCreate" hidden>First time? Create a password login</button><br />
+      <button class="ed-link" id="toReset" hidden>Forgot your password?</button>
+      <button class="ed-link" id="toLink" hidden>Email me a sign-in link instead</button>
       <button class="ed-link" id="toSignIn" hidden>Back to sign in</button>
     </p>
   </div>

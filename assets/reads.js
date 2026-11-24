@@ -100,8 +100,18 @@
       anchor.removeAttribute("href");
       return;
     }
-    const isRead =
-      url.origin === new URL(SITE).origin && url.pathname.startsWith(new URL(SITE).pathname + "/reads");
+    // A read on this site, or on an address the site used to have: point it
+    // at this site.
+    let isRead = false;
+    for (const base of [SITE].concat(CFG.sites || [])) {
+      const site = new URL(base);
+      const prefix = site.pathname.replace(/\/$/, "") + "/reads";
+      if (url.origin === site.origin && (url.pathname === prefix || url.pathname.startsWith(prefix + "/"))) {
+        url = new URL(SITE + url.pathname.slice(prefix.length - "/reads".length) + url.search + url.hash);
+        isRead = true;
+        break;
+      }
+    }
     if (isRead) {
       if (inApp) url.searchParams.set("in_app", "1");
       anchor.setAttribute("href", url.toString());

@@ -104,6 +104,8 @@
     if (/Failed to fetch|NetworkError|Load failed/.test(message)) return "Couldn't reach Nami's server. Check your connection and try again.";
     if (/Password should be/.test(message)) return "Use a password of at least 8 characters.";
     if (/already registered/.test(message)) return "There's already a login with this email. Sign in instead.";
+    if (/rate limit|too many|security purposes/i.test(message))
+      return "Too many emails were sent just now. Wait a few minutes, then try again.";
     return message || "Something went wrong. Try again.";
   }
 
@@ -139,29 +141,40 @@
 
   // ---------- signing in ----------
 
-  let mode = "signin"; // signin | create | reset
+  // link: email a one-time sign-in link to an existing Nami account (the
+  // founder signs in to the app with Apple, so there is no password).
+  // signin, create, reset: the email and password login, kept as a fallback.
+  let mode = "link";
 
   function setMode(next) {
     mode = next;
     setError("signInError", "");
     $("signInOk").hidden = true;
-    $("passwordField").hidden = next === "reset";
-    $("password").required = next !== "reset";
+    const usesPassword = next === "signin" || next === "create";
+    $("passwordField").hidden = !usesPassword;
+    $("password").required = usesPassword;
     $("password").autocomplete = next === "create" ? "new-password" : "current-password";
     $("signInTitle").textContent =
-      next === "create" ? "Create your editor login" : next === "reset" ? "Reset your password" : "Sign in to write articles";
+      next === "create" ? "Create a password login" : next === "reset" ? "Reset your password" : "Sign in to write articles";
     $("signInHint").textContent =
-      next === "create"
+      next === "link"
+        ? "Use the email of your Nami account. We'll email you a link that signs you in, with no password."
+        : next === "create"
         ? "Pick an email you read and a password of at least 8 characters. This login is only for writing articles."
         : next === "reset"
         ? "We'll email you a link to choose a new password."
-        : "Use your editor login. This is separate from signing in to Nami with Apple.";
-    $("signInButton").textContent = next === "create" ? "Create login" : next === "reset" ? "Email me a link" : "Sign in";
+        : "Use the email and password of your editor login.";
+    $("signInButton").textContent =
+      next === "link" ? "Email me a sign-in link" : next === "create" ? "Create login" : next === "reset" ? "Email me a link" : "Sign in";
+    $("toPassword").hidden = next !== "link";
+    $("toLink").hidden = next !== "signin";
     $("toCreate").hidden = next !== "signin";
     $("toReset").hidden = next !== "signin";
-    $("toSignIn").hidden = next === "signin";
+    $("toSignIn").hidden = next !== "create" && next !== "reset";
   }
 
+  $("toPassword").onclick = () => setMode("signin");
+  $("toLink").onclick = () => setMode("link");
   $("toCreate").onclick = () => setMode("create");
   $("toReset").onclick = () => setMode("reset");
   $("toSignIn").onclick = () => setMode("signin");
@@ -174,7 +187,19 @@
     const email = $("email").value.trim();
     const password = $("password").value;
     try {
-      if (mode === "create") {
+      if (mode === "link") {
+        // Only signs in to an account that already exists; never makes one.
+        const { error } = await sb.auth.signInWithOtp({
+          email,
+          options: { shouldCreateUser: false, emailRedirectTo: EDITOR_URL },
+        });
+        // An email with no account gets the same answer, so this page
+        // never tells anyone which emails have a Nami account.
+        if (error && !/signups not allowed|not found/i.test(error.message || "")) throw error;
+        $("signInOk").textContent =
+          "If that email has a Nami account, a sign-in link is on its way. Open it in this browser. Each link works once.";
+        $("signInOk").hidden = false;
+      } else if (mode === "create") {
         const { data, error } = await sb.auth.signUp({ email, password, options: { emailRedirectTo: EDITOR_URL } });
         if (error) throw error;
         if (!data.session) {
@@ -233,7 +258,7 @@
   async function route() {
     recovering = false;
     if (!user) {
-      setMode("signin");
+      setMode("link");
       return show("viewSignIn");
     }
     const { data, error } = await sb.from("content_editors").select("user_id").eq("user_id", user.id).maybeSingle();
@@ -1008,5 +1033,5 @@
 
   // onAuthStateChange above fires INITIAL_SESSION once the stored login
   // (or a link's) is read, and that draws the first screen.
-  setMode("signin");
+  setMode("link");
 })();
