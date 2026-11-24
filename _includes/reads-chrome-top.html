@@ -1,0 +1,14 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="{{ '/reads/' | relative_url }}"><img src="{{ '/assets/nami-icon.png' | relative_url }}" alt="" />Nami</a>
+    <nav>
+      <a href="{{ '/reads/' | relative_url }}" class="app-only-hide">Reads</a>
+      <a href="{{ '/support/' | relative_url }}" class="app-only-hide">Support</a>
+      <a class="get-app" href="https://apps.apple.com/gb/app/id6761417773">Download for iOS</a>
+    </nav>
+  </div>
+</header>
+<script>
+  // Opened from inside the Nami app: keep that through every link.
+  if (new URLSearchParams(location.search).has("in_app")) document.documentElement.classList.add("in-app");
+</script>
