@@ -9,9 +9,19 @@
   const SITE = CFG.site;
   const EDITOR_URL = SITE + "/reads/editor/";
   const sb = window.supabase.createClient(CFG.supabaseUrl, CFG.publishableKey, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+      // No cross-tab lock. In Safari on iPhone a tab left in the background
+      // can hold the browser's lock for good, and every other tab then
+      // waits on it forever: a blank editor. One person edits here, so the
+      // lock buys nothing.
+      lock: (_name, _timeout, fn) => fn(),
+    },
   });
   const $ = (id) => document.getElementById(id);
+  let shown = false; // a view other than "Loading" has been drawn
 
   const SCENES = [
     ["", "Topic scene"],
@@ -74,7 +84,9 @@
   // ---------- small helpers ----------
 
   function show(view) {
-    for (const id of ["viewSignIn", "viewNewPassword", "viewNotEditor", "viewHome", "viewEdit"]) $(id).hidden = id !== view;
+    shown = true;
+    for (const id of ["viewLoading", "viewSignIn", "viewNewPassword", "viewNotEditor", "viewHome", "viewEdit"])
+      $(id).hidden = id !== view;
     window.scrollTo(0, 0);
   }
 
@@ -256,6 +268,16 @@
   });
 
   async function route() {
+    try {
+      await routeNow();
+    } catch (error) {
+      setMode("link");
+      show("viewSignIn");
+      setError("signInError", plain(error));
+    }
+  }
+
+  async function routeNow() {
     recovering = false;
     if (!user) {
       setMode("link");
@@ -1034,4 +1056,20 @@
   // onAuthStateChange above fires INITIAL_SESSION once the stored login
   // (or a link's) is read, and that draws the first screen.
   setMode("link");
+
+  // If nothing has drawn after a while, say so instead of a blank page.
+  setTimeout(() => {
+    if (shown) return;
+    $("loadingText").textContent = "This is taking longer than it should. Reload the page, or sign in again.";
+    $("loadingStuck").hidden = false;
+  }, 8000);
+  $("reloadPage").onclick = () => location.reload();
+  $("startAgain").onclick = () => {
+    try {
+      Object.keys(localStorage)
+        .filter((key) => key.startsWith("sb-"))
+        .forEach((key) => localStorage.removeItem(key));
+    } catch (_) {}
+    location.replace(EDITOR_URL);
+  };
 })();
