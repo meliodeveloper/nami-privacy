@@ -1,7 +1,7 @@
 # Nami Reads
 
 **Since 24 November 2026, reads are written, published and edited in the
-article editor: https://meliodeveloper.github.io/nami-privacy/reads/editor/**
+article editor: https://namiarticles.meliolabs.io/reads/editor/**
 Articles live in Nami's Supabase (`public.articles`), the site draws them at
 `/reads/?id=<id>`, and the app reads them from `reads_catalogue()`. Nothing
 here needs editing to publish an article.
@@ -25,7 +25,7 @@ The rest of this file describes the old file-based setup.
 Short reads that appear in Nami under Insights and at the foot of related
 screens. Each read is one file in `_reads/`. Merging a change to `main`
 publishes it: GitHub Pages rebuilds the site, the read appears at
-`https://meliodeveloper.github.io/nami-privacy/reads/<file name>/`, and the
+`https://namiarticles.meliolabs.io/reads/<file name>/`, and the
 app picks it up from `reads/index.json` the next time it checks (at most once
 a day).
 
