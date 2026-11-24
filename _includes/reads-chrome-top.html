@@ -10,5 +10,16 @@
 </header>
 <script>
   // Opened from inside the Nami app: keep that through every link.
-  if (new URLSearchParams(location.search).has("in_app")) document.documentElement.classList.add("in-app");
+  if (new URLSearchParams(location.search).has("in_app")) {
+    document.documentElement.classList.add("in-app");
+    // Every link to this site's pages keeps it, so the download button
+    // stays hidden inside the app's browser.
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('a[href^="/nami-privacy/"]').forEach(function (a) {
+        var url = new URL(a.getAttribute("href"), location.origin);
+        url.searchParams.set("in_app", "1");
+        a.setAttribute("href", url.pathname + url.search + url.hash);
+      });
+    });
+  }
 </script>

@@ -388,16 +388,17 @@
   function drawForm() {
     setError("editError", "");
     const published = model.status === "published";
-    const everPublished = !!model.published_at;
     $("fTitle").value = model.title || "";
     $("fDek").value = model.dek || "";
     $("fListed").value = String(model.listed !== false);
     $("fTopic").value = model.topic || "pay_tax";
     $("fId").value = model.id || "";
-    $("fId").disabled = everPublished;
-    $("idHint").textContent = everPublished
-      ? "This article has been published, so its address is fixed: " + readLink(model.id)
-      : "Lower case words and hyphens. It's part of the link, so it can't change once the article is published.";
+    // Fixed from the first save, so links, history and the app's ticks all
+    // keep pointing at the same article.
+    $("fId").disabled = !!originalId;
+    $("idHint").textContent = originalId
+      ? "The address is fixed once an article is saved: " + readLink(model.id)
+      : "Lower case words and hyphens. It's part of the link, so it can't change after the first save.";
     $("fChecked").value = model.checked || "";
     $("fReviewBy").value = model.review_by || "";
     $("fOrder").value = model.sort_order ?? 1000;
@@ -689,12 +690,22 @@
           .upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false });
         if (error) throw error;
         const { data } = sb.storage.from("article-images").getPublicUrl(path);
-        t.setSelectionRange(at, at);
-        insertBlock(t, "![Describe the picture](" + data.publicUrl + ")", null);
-        // Select the caption so it can be typed over straight away.
-        const start = t.value.indexOf("![Describe the picture](" + data.publicUrl);
-        if (start >= 0) t.setSelectionRange(start + 2, start + 2 + "Describe the picture".length);
-        section.text = t.value;
+        const line = "![Describe the picture](" + data.publicUrl + ")";
+        if (!t.isConnected || !model.sections.includes(section)) {
+          // The sections were redrawn while it uploaded: add it to the end of
+          // the same section's words rather than to a box no longer shown.
+          if (model.sections.includes(section)) {
+            section.text = String(section.text || "").replace(/\s+$/, "") + "\n\n" + line + "\n";
+            drawSections();
+          }
+        } else {
+          t.setSelectionRange(Math.min(at, t.value.length), Math.min(at, t.value.length));
+          insertBlock(t, line, null);
+          // Select the caption so it can be typed over straight away.
+          const start = t.value.indexOf(line);
+          if (start >= 0) t.setSelectionRange(start + 2, start + 2 + "Describe the picture".length);
+          section.text = t.value;
+        }
         changed();
         toast("Picture added. Type its caption over the selected words.");
       } catch (error) {
@@ -881,14 +892,24 @@
     if (issues.length) return setError("editError", issues.join(" "));
     setError("editError", "");
     busy = true;
+    // Nothing can be typed while saving, so nothing typed is lost when the
+    // saved article comes back.
+    $("split").inert = true;
     for (const b of ["saveDraft", "publish", "unpublish"]) $(b).disabled = true;
     try {
       const values = row(status);
+      // Only over the version this page opened: a save from another tab or
+      // device in between is never overwritten without a word.
       const query = originalId
-        ? sb.from("articles").update(values).eq("id", originalId)
+        ? sb.from("articles").update(values).eq("id", originalId).eq("updated_at", model.updated_at)
         : sb.from("articles").insert(values);
-      const { data, error } = await query.select("*").single();
+      const { data, error } = await query.select("*").maybeSingle();
       if (error) throw error;
+      if (!data) {
+        throw new Error(
+          "This article was changed somewhere else (another tab or device) since you opened it. Copy anything you want to keep, then go back to All articles and open it again."
+        );
+      }
       originalId = data.id;
       model = data;
       if (!model.sections.length) model.sections = [{ heading: "", text: "" }];
@@ -900,6 +921,7 @@
       setError("editError", plain(error));
     } finally {
       busy = false;
+      $("split").inert = false;
       for (const b of ["saveDraft", "publish", "unpublish"]) $(b).disabled = false;
     }
   }
@@ -947,7 +969,7 @@
       small.textContent = r.snapshot.title + (r.action === "insert" ? " (first save)" : "");
       b.append(small);
       b.onclick = () => {
-        const keep = { id: model.id, published_at: model.published_at, status: model.status };
+        const keep = { id: model.id, published_at: model.published_at, status: model.status, updated_at: model.updated_at };
         model = Object.assign({}, r.snapshot, keep);
         if (!Array.isArray(model.sections) || !model.sections.length) model.sections = [{ heading: "", text: "" }];
         $("dlgHistory").close();

@@ -119,7 +119,7 @@
   function markdown(text) {
     const html = window.marked.parse(String(text || ""), { gfm: true, breaks: false });
     const clean = window.DOMPurify.sanitize(html, {
-      ALLOWED_TAGS: ["p", "h3", "h4", "ul", "ol", "li", "strong", "em", "b", "i", "a", "img", "br", "blockquote"],
+      ALLOWED_TAGS: ["p", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "strong", "em", "b", "i", "a", "img", "br", "blockquote"],
       ALLOWED_ATTR: ["href", "src", "alt", "title", "start"],
     });
     const template = document.createElement("template");
@@ -186,7 +186,7 @@
     const body = el("div", { class: "read-body" });
     for (const section of article.sections || []) {
       const block = el("section");
-      if (section.heading) block.append(el("h2", { text: section.heading }));
+      if (section.heading) block.append(el("h2", { class: "section-title", text: section.heading }));
       block.append(markdown(section.text));
       body.append(block);
     }
@@ -307,9 +307,14 @@
       if (description && article.dek) description.setAttribute("content", article.dek);
       mount.replaceChildren(articleNode(article, all));
       window.scrollTo(0, 0);
-    } else if (all.length) {
+    } else {
       const target = document.getElementById("library-root");
-      if (target) target.replaceChildren(listNode(all));
+      if (!target) return;
+      target.replaceChildren(
+        all.length
+          ? listNode(all)
+          : el("div", { class: "notice" }, [el("p", { text: "No reads are published right now. Check back soon." })])
+      );
     }
   }
 
