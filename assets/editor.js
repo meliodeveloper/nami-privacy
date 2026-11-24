@@ -457,6 +457,10 @@
     const numbers = $("fNumbers");
     numbers.replaceChildren(...NUMBERS.map(([v, l]) => new Option(l, v)));
     numbers.value = model.your_numbers || "none";
+    madeArt = null;
+    $("artOptions").replaceChildren();
+    $("artOptions").hidden = true;
+    setError("artError", "");
     drawScenes();
     drawSections();
     drawSources();
@@ -498,14 +502,21 @@
   function drawScenes() {
     const box = $("scenes");
     box.replaceChildren();
-    for (const [value, label] of SCENES) {
+    const choices = SCENES.slice();
+    // Art made for this article comes first, so it stays pickable after
+    // choosing a stock scene.
+    const made = madeArt || (isMadeArt(model.art) ? model.art : null);
+    if (made) choices.unshift([made, "Your art"]);
+    for (const [value, label] of choices) {
       const b = document.createElement("button");
       b.type = "button";
       b.setAttribute("aria-pressed", String((model.art || "") === value));
       const img = document.createElement("img");
       img.alt = "";
       img.loading = "lazy";
-      img.src = SITE + "/reads/art/" + (value || "topic-" + model.topic.replace(/_/g, "-")) + "-thumb.jpg";
+      img.src = isMadeArt(value)
+        ? value.replace(/\.jpg$/, "-thumb.jpg")
+        : SITE + "/reads/art/" + (value || "topic-" + model.topic.replace(/_/g, "-")) + "-thumb.jpg";
       const span = document.createElement("span");
       span.textContent = label;
       b.append(img, span);
@@ -517,6 +528,109 @@
       box.append(b);
     }
   }
+
+  // ---------- generated art ----------
+
+  // The model picks colours and shapes for the same layered landscape the
+  // reads use (supabase/functions/article-art); it's drawn here with the
+  // site's own drawing code and uploaded only when picked.
+  let madeArt = null; // the art made in this visit, kept pickable
+
+  function isMadeArt(value) {
+    return typeof value === "string" && value.startsWith(window.NamiReads.MADE_ART);
+  }
+
+  async function generateArt() {
+    const prompt = $("artPrompt").value.replace(/\s+/g, " ").trim();
+    setError("artError", "");
+    if (!prompt) return setError("artError", "Describe the art you'd like, in a few words.");
+    const button = $("artGenerate");
+    if (button.disabled) return;
+    button.disabled = true;
+    button.textContent = "Generating…";
+    try {
+      const { data, error } = await sb.functions.invoke("article-art", { body: { prompt } });
+      if (error) {
+        let message = "";
+        try {
+          message = (await error.context.json()).error || "";
+        } catch (_) {}
+        throw new Error(message || "The art service didn't answer. Try again.");
+      }
+      const scenes = (data && data.scenes) || [];
+      if (!scenes.length) throw new Error("That didn't come out right. Try again, or word it differently.");
+      drawOptions(scenes);
+    } catch (error) {
+      setError("artError", plain(error));
+    } finally {
+      button.disabled = false;
+      button.textContent = "Generate";
+    }
+  }
+
+  function drawOptions(scenes) {
+    const box = $("artOptions");
+    box.replaceChildren();
+    for (const option of scenes) {
+      let canvas;
+      try {
+        canvas = window.NamiSceneArt.draw(option.scene, 516, 400);
+      } catch (_) {
+        continue;
+      }
+      const b = document.createElement("button");
+      b.type = "button";
+      const span = document.createElement("span");
+      span.textContent = option.name + ". Use this";
+      b.append(canvas, span);
+      b.onclick = () => useScene(option, b);
+      box.append(b);
+    }
+    box.hidden = !box.children.length;
+  }
+
+  async function useScene(option, button) {
+    if (button.getAttribute("aria-busy") === "true") return;
+    button.setAttribute("aria-busy", "true");
+    setError("artError", "");
+    try {
+      toast("Saving the art…");
+      const [W, H] = window.NamiSceneArt.FULL;
+      const [w, h] = window.NamiSceneArt.THUMB;
+      const full = await jpeg(window.NamiSceneArt.draw(option.scene, W, H), 0.82);
+      const thumb = await jpeg(window.NamiSceneArt.draw(option.scene, w, h), 0.82);
+      const name = (slugify(model.id || model.title) || "article").slice(0, 40) + "-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+      for (const [path, blob] of [["art/" + name + ".jpg", full], ["art/" + name + "-thumb.jpg", thumb]]) {
+        const { error } = await sb.storage
+          .from("article-images")
+          .upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false });
+        if (error) throw error;
+      }
+      madeArt = sb.storage.from("article-images").getPublicUrl("art/" + name + ".jpg").data.publicUrl;
+      model.art = madeArt;
+      drawScenes();
+      changed();
+      toast("Art added. Save to keep it.");
+    } catch (error) {
+      setError("artError", "The art didn't save. " + plain(error));
+    } finally {
+      button.removeAttribute("aria-busy");
+    }
+  }
+
+  function jpeg(canvas, quality) {
+    return new Promise((resolve, reject) =>
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Couldn't prepare the picture."))), "image/jpeg", quality)
+    );
+  }
+
+  $("artGenerate").onclick = generateArt;
+  $("artPrompt").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      generateArt();
+    }
+  });
 
   // ---------- sections ----------
 

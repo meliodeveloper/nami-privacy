@@ -59,7 +59,13 @@
     return article.art || "topic-" + String(article.topic || "").replace(/_/g, "-");
   }
 
+  // Art made in the editor lives in the article-images bucket; its
+  // thumbnail sits beside it as <name>-thumb.jpg.
+  const MADE_ART = CFG.supabaseUrl + "/storage/v1/object/public/article-images/art/";
+
   function artURL(article, thumb) {
+    const art = String(article.art || "");
+    if (art.startsWith(MADE_ART) && /\.jpg$/.test(art)) return thumb ? art.replace(/\.jpg$/, "-thumb.jpg") : art;
     return SITE + "/reads/art/" + scene(article) + (thumb ? "-thumb" : "") + ".jpg";
   }
 
@@ -328,7 +334,7 @@
     }
   }
 
-  window.NamiReads = { markdown, articleNode, listNode, artURL, minutes, words, TOPICS, scene };
+  window.NamiReads = { markdown, articleNode, listNode, artURL, minutes, words, TOPICS, scene, MADE_ART };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();

@@ -96,6 +96,12 @@ permalink: /reads/editor/
     .ed-scenes button { all: unset; cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; position: relative; }
     .ed-scenes button[aria-pressed="true"] { border-color: var(--link); }
     .ed-scenes img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .ed-make { display: flex; gap: 8px; align-items: flex-end; margin-top: 14px; }
+    .ed-make .ed-field { flex: 1; margin: 0; }
+    .ed-make .ed-btn { margin-bottom: 22px; }
+    .ed-made { margin-top: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .ed-made canvas { width: 100%; aspect-ratio: 1290 / 1000; display: block; }
+    .ed-made button[aria-busy="true"] { opacity: 0.6; cursor: progress; }
     .ed-scenes span { position: absolute; left: 0; right: 0; bottom: 0; font-size: 0.66rem; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.6)); padding: 10px 5px 4px; }
     .ed-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px 14px; }
     .ed-checks label { display: flex; gap: 8px; align-items: flex-start; font-size: 0.88rem; }
@@ -253,8 +259,17 @@ permalink: /reads/editor/
 
       <div class="ed-card">
         <h2>Picture at the top</h2>
-        <p class="ed-hint">The drawn scene behind the title, in the app and on the site.</p>
+        <p class="ed-hint">The drawn scene behind the title, in the app and on the site. Pick one, or make a new one below.</p>
         <div class="ed-scenes" id="scenes"></div>
+        <div class="ed-make">
+          <label class="ed-field"><span>Generate art</span>
+            <input class="ed-input" id="artPrompt" maxlength="300" placeholder="Describe it, for example: a frosty morning by a lake" />
+            <small>Three new scenes in the same style, from your words. Pick one to use it.</small>
+          </label>
+          <button class="ed-btn" type="button" id="artGenerate">Generate</button>
+        </div>
+        <div id="artError" class="ed-error" hidden></div>
+        <div class="ed-scenes ed-made" id="artOptions" hidden></div>
       </div>
 
       <div class="ed-card">
@@ -345,6 +360,7 @@ permalink: /reads/editor/
 <script src="{{ '/assets/vendor/supabase-js-2.45.4.min.js' | relative_url }}" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug"></script>
 <script src="{{ '/assets/nami-config.js' | relative_url }}"></script>
 <script src="{{ '/assets/reads.js' | relative_url }}"></script>
+<script src="{{ '/assets/scene-art.js' | relative_url }}"></script>
 <script src="{{ '/assets/editor.js' | relative_url }}"></script>
 </body>
 </html>
